@@ -1,0 +1,362 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Expose semantic tokens to Tailwind utilities (bg-brand, text-ink, font-display…). */
+@theme inline {
+  --color-bg: var(--brand-bg);
+  --color-surface: var(--brand-surface);
+  --color-ink: var(--brand-ink);
+  --color-muted: var(--brand-muted);
+  --color-line: var(--brand-line);
+  --color-brand: var(--brand-primary);
+  --color-brand-ink: var(--brand-primary-ink);
+  --color-accent: var(--brand-accent);
+  --color-accent-ink: var(--brand-accent-ink);
+  --color-highlight: var(--brand-highlight);
+
+  --color-tb-teal: var(--tb-teal);
+  --color-tb-forest: var(--tb-forest);
+  --color-tb-gold: var(--tb-gold);
+  --color-tb-gold-ink: var(--tb-gold-ink);
+  --color-tb-gold-light: var(--tb-gold-light);
+  --color-tb-ink-deep: var(--tb-ink-deep);
+  --color-tb-ivory: var(--tb-ivory);
+  --color-tb-aqua: var(--tb-aqua);
+  --color-mc-red: var(--mc-red);
+  --color-mc-red-ink: var(--mc-red-ink);
+  --color-mc-cream: var(--mc-cream);
+  --color-mc-cocoa: var(--mc-cocoa);
+  --color-mc-cheese: var(--mc-cheese);
+  --color-mc-leaf: var(--mc-leaf);
+  --color-charcoal: var(--rjs-charcoal);
+  --color-ivory: var(--rjs-ivory);
+
+  --font-display: var(--brand-font-display);
+  --font-sans: var(--brand-font-body);
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-script: var(--font-lobster), cursive;
+  --font-pop: var(--font-poppins), system-ui, sans-serif;
+
+
+  --radius-card: var(--brand-radius-card);
+  --radius-button: var(--brand-radius-button);
+  --shadow-card: var(--brand-shadow-card);
+  --shadow-lift: var(--brand-shadow-lift);
+  --ease-brand: var(--brand-ease);
+
+  --breakpoint-3xl: 120rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--brand-bg);
+    color: var(--brand-ink);
+    font-family: var(--brand-font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--brand-font-display);
+    font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking);
+  }
+
+  ::selection {
+    background: var(--brand-accent);
+    color: var(--brand-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--brand-focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+}
+
+@layer components {
+  /* max-w-7xl mx-auto px-4 sm:px-6 lg:px-8, widening to 1440px above 1536px. */
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1536px) {
+    .container-page {
+      max-width: 1440px;
+    }
+  }
+
+  /* The one vertical rhythm for sections: py-12 / md:py-16 / lg:py-20. Padding only, never margins. */
+  .section-y {
+    padding-block: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section-y {
+      padding-block: 4rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-y {
+      padding-block: 5rem;
+    }
+  }
+  /* Page-top variant: clears the fixed header, then the same rhythm. */
+  .section-top {
+    padding-top: calc(var(--header-h) + 1.5rem);
+    padding-bottom: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section-top {
+      padding-top: calc(var(--header-h) + 2rem);
+      padding-bottom: 4rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-top {
+      padding-bottom: 5rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--brand-font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brand-accent-ink);
+  }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* Batik-inspired dotted background used on Tok Bah surfaces */
+  .bg-batik-dots {
+    background-image: radial-gradient(rgb(184 137 59 / 0.18) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+  }
+
+  /* Halftone used on Mak 'Chic' surfaces */
+  .bg-halftone {
+    background-image: radial-gradient(rgb(74 31 18 / 0.12) 1.6px, transparent 1.8px);
+    background-size: 14px 14px;
+  }
+}
+
+/* ---------- Ambient loops (transform + opacity only) ---------- */
+@keyframes steam-rise {
+  0% {
+    transform: translate3d(0, 12px, 0) scaleY(0.85);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(0, -36px, 0) scaleY(1.15);
+    opacity: 0;
+  }
+}
+/* Applied to HTML-level wrappers so the browser can run it on the compositor. */
+.steam-path {
+  animation: steam-rise 3.6s ease-in-out infinite;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+.float-y {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+/* ---------- Hydration-free entrance animations (above the fold) ---------- */
+/* --intro-delay holds hero reveals until the intro curtains open; 0 when the intro is skipped. */
+:root {
+  --intro-delay: 1.15s;
+}
+.intro-skip {
+  --intro-delay: 0s;
+}
+
+@keyframes line-up {
+  from {
+    transform: translate3d(0, 110%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.line-up {
+  display: inline-block;
+  animation: line-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes clip-up {
+  from {
+    clip-path: inset(100% 0% 0% 0%);
+  }
+  to {
+    clip-path: inset(0% 0% 0% 0%);
+  }
+}
+@keyframes zoom-settle {
+  from {
+    transform: scale(1.18);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.clip-up {
+  animation: clip-up 1.2s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+.clip-up > * {
+  animation: zoom-settle 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: inherit;
+}
+
+/* ---------- Intro loader (pure CSS; JS only unmounts it) ---------- */
+.intro-skip .intro-loader {
+  display: none;
+}
+@keyframes intro-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.intro-stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: intro-draw 0.9s ease-in-out forwards;
+}
+@keyframes intro-fade {
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+.intro-mark {
+  animation:
+    rise-in 0.6s 0.2s both,
+    intro-fade 0.3s 1s forwards;
+}
+@keyframes curtain-up {
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+@keyframes curtain-down {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.intro-curtain-top {
+  animation: curtain-up 0.9s 1.15s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.intro-curtain-bottom {
+  animation: curtain-down 0.9s 1.15s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+@keyframes intro-gone {
+  to {
+    visibility: hidden;
+  }
+}
+.intro-loader {
+  animation: intro-gone 0s 2.1s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .line-up,
+  .rise-in,
+  .clip-up,
+  .clip-up > * {
+    animation-delay: 0s !important;
+  }
+  .steam-path {
+    opacity: 0.35;
+    animation: none;
+  }
+}
+

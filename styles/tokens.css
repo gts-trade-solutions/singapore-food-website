@@ -1,0 +1,115 @@
+/*
+ * RJS Foods design tokens.
+ * Raw palette first, then semantic tokens that each brand remaps via [data-brand].
+ * Components only ever use the semantic tokens (exposed to Tailwind in globals.css).
+ */
+
+:root {
+  /* ---------- Raw palette ---------- */
+  /* Tok Bah */
+  --tb-teal: #0f3d3e;
+  --tb-forest: #1f4d36;
+  --tb-gold: #b8893b;
+  --tb-gold-ink: #8a6424; /* AA-safe gold for small text on ivory */
+  --tb-gold-light: #d9b06a; /* AA-safe gold for small text on teal / dark */
+  --tb-ink-deep: #0a2324; /* AA-safe text on gold */
+  --tb-ivory: #faf7f0;
+  --tb-aqua: #e3f1f1;
+
+  /* Mak 'Chic' Keropok */
+  --mc-red: #d9372a;
+  --mc-red-ink: #b02a1f; /* AA-safe red for small text on cream */
+  --mc-cream: #fbf0d9;
+  --mc-cocoa: #4a1f12;
+  --mc-cheese: #f5b325;
+  --mc-leaf: #2e7d32;
+
+  /* Shared */
+  --rjs-ivory: #faf7f0;
+  --rjs-charcoal: #1e1c1a;
+  --rjs-stone: #6b645c;
+  --rjs-line: #e4ddd0;
+
+  /* ---------- Semantic tokens (RJS default) ---------- */
+  --brand-bg: var(--rjs-ivory);
+  --brand-surface: #f2ede3;
+  --brand-ink: var(--rjs-charcoal);
+  --brand-muted: var(--rjs-stone);
+  --brand-line: var(--rjs-line);
+  --brand-primary: var(--rjs-charcoal);
+  --brand-primary-ink: var(--rjs-ivory);
+  --brand-accent: var(--tb-gold);
+  --brand-accent-ink: var(--tb-gold-ink);
+  --brand-highlight: var(--mc-red);
+  --brand-focus: #2563eb;
+
+  --brand-font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --brand-font-body: var(--font-inter), Inter, system-ui, sans-serif;
+  --display-weight: 500;
+  --display-tracking: -0.01em;
+
+  --brand-radius-card: 1.25rem;
+  --brand-radius-button: 999px;
+  --brand-shadow-card: 0 1px 2px rgb(30 28 26 / 0.04), 0 12px 32px -12px rgb(30 28 26 / 0.18);
+  --brand-shadow-lift: 0 2px 4px rgb(30 28 26 / 0.06), 0 30px 60px -20px rgb(30 28 26 / 0.3);
+
+  /* Motion personality */
+  --brand-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --brand-duration: 700ms;
+
+  --header-h: 4.5rem;
+}
+
+[data-brand="tokbah"] {
+  --brand-bg: var(--tb-ivory);
+  --brand-surface: var(--tb-aqua);
+  --brand-ink: #13292a;
+  --brand-muted: #4b5f5f;
+  --brand-line: #d6e2dc;
+  --brand-primary: var(--tb-teal);
+  --brand-primary-ink: var(--tb-ivory);
+  --brand-accent: var(--tb-gold);
+  --brand-accent-ink: var(--tb-gold-ink);
+  --brand-highlight: var(--tb-forest);
+  --brand-focus: var(--tb-gold-ink);
+
+  --brand-font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --brand-font-body: var(--font-inter), Inter, system-ui, sans-serif;
+  --display-weight: 500;
+  --display-tracking: -0.01em;
+
+  --brand-radius-card: 0.375rem;
+  --brand-radius-button: 0.25rem;
+  --brand-shadow-card: 0 1px 2px rgb(15 61 62 / 0.05), 0 18px 40px -20px rgb(15 61 62 / 0.25);
+  --brand-shadow-lift: 0 2px 6px rgb(15 61 62 / 0.08), 0 40px 70px -30px rgb(15 61 62 / 0.4);
+
+  --brand-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --brand-duration: 1100ms;
+}
+
+[data-brand="makchic"] {
+  --brand-bg: var(--mc-cream);
+  --brand-surface: #f8e2b5;
+  --brand-ink: var(--mc-cocoa);
+  --brand-muted: #6e3b28;
+  --brand-line: #ecd2a2;
+  --brand-primary: var(--mc-red);
+  --brand-primary-ink: #ffffff;
+  --brand-accent: var(--mc-cheese);
+  --brand-accent-ink: var(--mc-cocoa);
+  --brand-highlight: var(--mc-leaf);
+  --brand-focus: var(--mc-cocoa);
+
+  --brand-font-display: var(--font-lobster), Lobster, "Brush Script MT", cursive;
+  --brand-font-body: var(--font-poppins), Poppins, system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: 0;
+
+  --brand-radius-card: 1.75rem;
+  --brand-radius-button: 999px;
+  --brand-shadow-card: 4px 4px 0 var(--mc-cocoa);
+  --brand-shadow-lift: 8px 10px 0 var(--mc-cocoa);
+
+  --brand-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --brand-duration: 500ms;
+}
