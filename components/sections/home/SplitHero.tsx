@@ -211,7 +211,7 @@ export function SplitHero() {
           style={{ transform: `translateX(${split - 50}vw)` }}
         >
           <div className="grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-ivory shadow-lift">
-            <LogoMark className="h-12 w-12" />
+            <LogoMark className="h-auto w-12" title="" />
           </div>
         </div>
       </div>

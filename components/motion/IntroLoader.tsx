@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LOGO_PATHS } from "@/components/ui/Logo";
+import { LOGO_PATHS, LOGO_VIEWBOX, LogoFoods } from "@/components/ui/Logo";
 import { useUI } from "@/lib/ui-store";
 import { INTRO_SESSION_KEY } from "@/lib/intro";
 
@@ -48,39 +48,35 @@ export function IntroLoader() {
       <div className="intro-curtain-bottom absolute inset-x-0 bottom-0 h-1/2 bg-mc-red" />
       <div className="intro-mark absolute inset-0 grid place-items-center">
         <div className="flex flex-col items-center gap-5">
-          <svg viewBox="0 0 64 64" className="h-24 w-24" fill="none">
-            <path className="intro-stroke" pathLength={1} d={LOGO_PATHS.ring} stroke="#FAF7F0" strokeWidth="2" />
-            <path
-              className="intro-stroke"
-              pathLength={1}
-              d={LOGO_PATHS.bowl}
-              stroke="#FAF7F0"
-              strokeWidth="2"
-              style={{ animationDelay: "0.25s" }}
-            />
-            <path
-              className="intro-stroke"
-              pathLength={1}
-              d={LOGO_PATHS.rim}
-              stroke="#B8893B"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              style={{ animationDelay: "0.45s" }}
-            />
-            {LOGO_PATHS.steam.map((d, i) => (
+          {/* The RJS logo writes itself: R, J, S, then the underline, then "Foods" fades in. */}
+          <svg viewBox={LOGO_VIEWBOX} className="h-28 w-auto md:h-36" fill="none">
+            {LOGO_PATHS.letters.map((d, i) => (
               <path
                 key={d}
                 className="intro-stroke"
                 pathLength={1}
                 d={d}
-                stroke="#B8893B"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                style={{ animationDelay: `${0.55 + i * 0.1}s` }}
+                stroke="#FAF7F0"
+                strokeWidth={LOGO_PATHS.letterStroke}
+                strokeLinejoin="round"
+                style={{ animationDelay: `${i * 0.18}s` }}
               />
             ))}
+            <path
+              className="intro-stroke"
+              pathLength={1}
+              d={LOGO_PATHS.underline}
+              stroke="#B8893B"
+              strokeWidth={LOGO_PATHS.underlineStroke}
+              style={{ animationDelay: "0.6s" }}
+            />
+            <g className="rise-in" style={{ animationDelay: "0.75s" }}>
+              <LogoFoods fill="#D9B06A" />
+            </g>
           </svg>
-          <p className="font-serif text-2xl tracking-[0.3em] text-ivory">RJS FOODS</p>
+          <p className="text-xs font-semibold tracking-[0.3em] text-ivory/80 uppercase" lang="ms">
+            Tradisi · Rasa · Bersama
+          </p>
         </div>
       </div>
     </div>

@@ -161,7 +161,7 @@ function RjsScene({ title, slow }: { title: string; slow: boolean }) {
             <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 7" strokeLinecap="round" />
           </svg>
           <span className="grid h-20 w-20 place-items-center rounded-full bg-ivory">
-            <LogoMark className="h-14 w-14" title="" />
+            <LogoMark className="h-auto w-12" title="" />
           </span>
         </motion.div>
         <motion.p variants={screenItem} className="eyebrow !text-tb-gold-light">

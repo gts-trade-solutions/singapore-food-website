@@ -114,7 +114,7 @@ export function Header() {
         />
         <div className="container-page relative flex h-[var(--header-h)] items-center justify-between gap-6">
           <TransitionLink href="/" className="relative z-10 text-ink" aria-label="RJS Foods home">
-            <Logo />
+            <Logo variant={overHero ? "light" : "color"} />
           </TransitionLink>
 
           <nav aria-label="Main" className="hidden lg:block">

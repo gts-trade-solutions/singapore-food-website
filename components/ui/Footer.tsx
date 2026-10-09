@@ -17,7 +17,7 @@ export function Footer() {
 
       <div className="container-page relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:py-20">
         <div className="space-y-5">
-          <Logo className="text-ivory" />
+          <Logo variant="light" />
           <p className="max-w-sm text-sm leading-relaxed text-ivory/75">{siteConfig.description}</p>
           <CertificationBadges className="[--brand-accent:var(--tb-gold)] [--brand-accent-ink:var(--tb-gold)]" />
         </div>
