@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import type { Product } from "@/data/products";
+import { getProduct, type Product } from "@/data/products";
 import { brands } from "@/data/brands";
 
 export interface CartLine {
@@ -29,6 +29,27 @@ interface CartState {
 }
 
 const MAX_QTY = 99;
+
+/**
+ * Saved baskets can outlive catalogue changes (new images, prices, names).
+ * On load, refresh every line from the current catalogue and drop products
+ * that no longer exist, so the drawer and WhatsApp order never show stale data.
+ */
+function refreshLines(lines: CartLine[]): CartLine[] {
+  return lines.flatMap((line) => {
+    const product = getProduct(line.slug);
+    if (!product) return [];
+    return [
+      {
+        ...line,
+        name: product.name,
+        brandName: brands[product.brand].name,
+        image: product.image.src,
+        priceSGD: product.priceSGD,
+      },
+    ];
+  });
+}
 
 export const useCart = create<CartState>()(
   persist(
@@ -76,6 +97,10 @@ export const useCart = create<CartState>()(
       version: 1,
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({ lines: state.lines }),
+      merge: (persisted, current) => {
+        const saved = (persisted as Partial<CartState> | undefined)?.lines ?? [];
+        return { ...current, lines: refreshLines(saved) };
+      },
     },
   ),
 );
