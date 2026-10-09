@@ -79,7 +79,7 @@ export function SplitHero() {
       onPointerLeave={() => hover(null)}
     >
       <h1 id="hero-title" className="sr-only">
-        RJS Foods: Tok Bah heritage meals and Mak &apos;Chic&apos; Keropok snacks, Nusantara flavours for Singapore
+        RJS Foods: Tok Bah heritage meals and Mak &apos;Chic&apos; Keropok crackers, Nusantara flavours for Singapore
       </h1>
 
       {/* Stage: stacked, content-height panels on mobile; overlapping split layers from md. */}
@@ -97,18 +97,18 @@ export function SplitHero() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative z-10 max-w-md md:ml-auto md:text-right">
-              <p className="mb-3 font-pop text-xs font-bold tracking-[0.25em] text-white uppercase">Mak &apos;Chic&apos; Keropok</p>
+              <p className="mb-3 font-pop text-xs font-bold tracking-[0.25em] text-white uppercase">Mak &apos;Chic&apos; Keropok · Crackers</p>
               <SplitText
                 as="h2"
                 by="line"
                 immediate
                 delay={0.15}
                 stagger={0.12}
-                text={"Rangup.\nSedap.\nHabis."}
+                text={"Rangup.\nSedap.\nmmm...dapp!"}
                 className="font-script text-[clamp(3.25rem,6.5vw,6.5rem)] leading-[0.9] text-mc-cream"
               />
               <p className="mt-4 max-w-[62%] font-pop text-base text-white sm:max-w-sm md:ml-auto">
-                Crispy, cheesy, chilli-loud snacks. Kampung favourites with a cheeky twist.
+                Crispy, cheesy, chilli-loud crackers. Kampung favourites with a cheeky twist.
               </p>
               <div className="mt-6 flex md:justify-end">
                 <MagneticButton>
@@ -164,7 +164,7 @@ export function SplitHero() {
           >
             <div className="relative z-10 max-w-md">
               <p className="eyebrow mb-3 !text-tb-gold-light">
-                Tok Bah<span className="hidden sm:inline md:hidden lg:inline"> · Citarasa Nusantara</span>
+                Tok Bah<span className="hidden sm:inline md:hidden lg:inline"> · Ready-to-Eat Meals</span>
               </p>
               <SplitText
                 as="h2"

@@ -72,9 +72,9 @@ export function Footer() {
 
       <div className="container-page relative flex flex-col gap-2 border-t border-ivory/15 py-6 text-xs text-ivory/60 md:flex-row md:justify-between">
         <p>
-          © {year} {siteConfig.legalName}. Nusantara flavours for Singapore homes.
+          © {year} {siteConfig.legalName} · UEN {siteConfig.uen} · Est. {siteConfig.incorporated.slice(0, 4)}. Nusantara flavours for Singapore homes.
         </p>
-        <p lang="ms">Tradisi · Rasa · Bersama — Rangup · Sedap</p>
+        <p lang="ms">Tradisi · Rasa · Bersama — mmm...dapp!</p>
       </div>
     </footer>
   );

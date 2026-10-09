@@ -7,6 +7,8 @@ export interface Brand {
   key: Exclude<BrandKey, "rjs">;
   name: string;
   shortName: string;
+  /** Product category this brand covers (shown on product rows, filters and brand pages). */
+  category: string;
   href: string;
   taglines: { ms: string; en: string }[];
   summary: string;
@@ -21,6 +23,7 @@ export const brands: Record<BrandSlug, Brand> = {
     key: "tokbah",
     name: "Tok Bah",
     shortName: "Tok Bah",
+    category: "Ready-to-Eat Meals",
     href: "/tok-bah",
     taglines: [
       { ms: "Tradisi · Rasa · Bersama", en: "Tradition · Taste · Together" },
@@ -36,10 +39,15 @@ export const brands: Record<BrandSlug, Brand> = {
     key: "makchic",
     name: "Mak 'Chic' Keropok",
     shortName: "Mak 'Chic'",
+    category: "Crackers",
     href: "/mak-chic",
-    taglines: [{ ms: "Rangup · Sedap", en: "Crispy · Delicious" }],
+    // First tagline is the brand line; "Rangup · Sedap" matches the round labels.
+    taglines: [
+      { ms: "mmm...dapp!", en: "mmm...dapp!" },
+      { ms: "Rangup · Sedap", en: "Crispy · Delicious" },
+    ],
     summary:
-      "Loud, crunchy, impossible-to-share snacks. Kampung favourites with a cheeky twist.",
+      "Loud, crunchy, impossible-to-share crackers. Kampung favourites with a cheeky twist. mmm...dapp!",
     color: "#D9372A",
     colorInk: "#FFFFFF",
   },

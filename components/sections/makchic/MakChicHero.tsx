@@ -79,10 +79,10 @@ export function MakChicHero() {
       <div className="container-page relative grid items-center gap-8 md:gap-10 lg:grid-cols-2">
         <div className="relative z-10">
           <p className="mb-5 inline-flex -rotate-2 rounded-full border-[3px] border-mc-cocoa bg-mc-cheese px-4 py-1.5 font-pop text-xs font-extrabold tracking-[0.2em] text-mc-cocoa uppercase shadow-card">
-            Keropok · Snacks
+            Keropok · Crackers
           </p>
           <h1 id="mc-title" className="relative">
-            <span className="sr-only">Mak &apos;Chic&apos; Keropok: Rangup, Sedap</span>
+            <span className="sr-only">Mak &apos;Chic&apos; Keropok crackers: mmm...dapp!</span>
             <span aria-hidden="true" className="relative block">
               <SplitText
                 as="span"
@@ -97,11 +97,11 @@ export function MakChicHero() {
               </span>
             </span>
             <span aria-hidden="true" className="mt-4 block font-pop text-[clamp(1.75rem,4vw,3rem)] leading-tight font-extrabold text-mc-cocoa">
-              Rangup · Sedap
+              mmm...dapp!
             </span>
           </h1>
           <p className="mt-4 max-w-md font-pop text-base text-mc-cocoa/90 md:text-lg">
-            Crispy, cheesy, chilli-loud snacks. Kampung favourites with a cheeky twist, made to be passed around (or not).
+            Crispy, cheesy, chilli-loud crackers. Kampung favourites with a cheeky twist, made to be passed around (or not).
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <MagneticButton>

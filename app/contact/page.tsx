@@ -76,6 +76,13 @@ export default function ContactPage() {
                   <dt className="eyebrow mb-1">Based in</dt>
                   <dd className="text-base">{siteConfig.address}</dd>
                 </div>
+                <div className="sm:col-span-2">
+                  <dt className="eyebrow mb-1">Business registration</dt>
+                  <dd className="text-base">
+                    {siteConfig.legalName} · UEN {siteConfig.uen}
+                    <span className="block text-sm text-muted">Wholesale of food products · Singapore</span>
+                  </dd>
+                </div>
               </dl>
             </Reveal>
 

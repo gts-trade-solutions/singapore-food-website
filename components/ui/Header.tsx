@@ -197,7 +197,7 @@ export function Header() {
                 </motion.li>
               ))}
             </ul>
-            <p className="mt-auto text-sm text-muted">Tradisi · Rasa · Bersama &nbsp;/&nbsp; Rangup · Sedap</p>
+            <p className="mt-auto text-sm text-muted">Tradisi · Rasa · Bersama &nbsp;/&nbsp; mmm...dapp!</p>
           </motion.nav>
         )}
       </AnimatePresence>

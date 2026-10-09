@@ -8,7 +8,7 @@ import { ProductGrid } from "@/components/sections/ProductGrid";
 export const metadata = pageMetadata({
   title: "Shop All Products",
   description:
-    "Shop Tok Bah heritage meals, cooking pastes and rice, plus Mak 'Chic' Keropok snacks. Filter by brand, type and spice level, then order via WhatsApp in Singapore.",
+    "Shop Tok Bah heritage meals, cooking pastes and rice, plus Mak 'Chic' Keropok crackers. Filter by brand, type and spice level, then order via WhatsApp in Singapore.",
   path: "/shop",
 });
 

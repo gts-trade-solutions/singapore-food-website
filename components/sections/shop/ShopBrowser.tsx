@@ -13,8 +13,8 @@ type Option<T extends string> = { value: T | "all"; label: string };
 
 const BRAND_OPTIONS: Option<BrandSlug>[] = [
   { value: "all", label: "All brands" },
-  { value: "tok-bah", label: brands["tok-bah"].name },
-  { value: "mak-chic", label: brands["mak-chic"].shortName },
+  { value: "tok-bah", label: `${brands["tok-bah"].name} · ${brands["tok-bah"].category}` },
+  { value: "mak-chic", label: `${brands["mak-chic"].shortName} · ${brands["mak-chic"].category}` },
 ];
 
 const TYPE_OPTIONS: Option<ProductType>[] = [

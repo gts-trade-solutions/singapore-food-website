@@ -5,7 +5,7 @@ const ITEMS = [
   { text: "Tradisi · Rasa · Bersama", lang: "ms", brand: "tb" },
   { text: "Rangup · Sedap", lang: "ms", brand: "mc" },
   { text: "Taste of the Archipelago", lang: "en", brand: "tb" },
-  { text: "Crispy · Delicious", lang: "en", brand: "mc" },
+  { text: "mmm...dapp!", lang: "ms", brand: "mc" },
   { text: "Citarasa Nusantara", lang: "ms", brand: "tb" },
   { text: "Tradition · Taste · Together", lang: "en", brand: "tb" },
 ] as const;

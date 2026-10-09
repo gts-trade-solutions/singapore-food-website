@@ -94,7 +94,7 @@ export const kitchenTimeline = [
   {
     step: "04",
     title: "Fry & season",
-    body: "Snacks are fried in small batches and tossed in seasoning while still warm.",
+    body: "Crackers are fried in small batches and tossed in seasoning while still warm.",
   },
   {
     step: "05",

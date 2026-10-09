@@ -248,7 +248,13 @@ export function OurProducts() {
                         <BrandMark brand={brand} />
                       </span>
                     </h3>
-                    <p className={cn("text-sm text-muted md:text-base", isSnack && "font-pop")}>{line}</p>
+                    <div className={cn("flex flex-col", isSnack && "font-pop")}>
+                      <span className={cn("text-xs font-bold tracking-[0.18em] uppercase", isSnack ? "text-mc-red-ink" : "text-tb-gold-ink")}>
+                        {brands[brand].category}
+                        {isSnack && <span className="ml-2 normal-case tracking-normal">· {brands[brand].taglines[0].en}</span>}
+                      </span>
+                      <span className="text-sm text-muted md:text-base">{line}</span>
+                    </div>
                   </div>
                   <TransitionLink
                     href={brands[brand].href}

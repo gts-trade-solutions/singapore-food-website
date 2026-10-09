@@ -49,7 +49,7 @@ export const productTypeLabels: Record<ProductType, string> = {
   meal: "Ready meals",
   paste: "Cooking pastes",
   rice: "Rice",
-  snack: "Snacks",
+  snack: "Crackers",
 };
 
 export const spiceLabels: Record<SpiceLevel, string> = {
@@ -77,7 +77,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 1,
     flavours: ["sweet", "savoury"],
-    image: { src: "/products/ayam-masak-kicap.webp", alt: "Tok Bah Ayam Masak Kicap ready meal pack" },
+    image: { src: "/products/ayam-masak-kicap-label.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) pack front with a bowl of chicken in soy gravy" },
     accent: "#7A3E1D",
     featured: true,
     priceSGD: 7.90, // Sample price (SGD) — confirm before launch
@@ -103,7 +103,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/rendang-daging.webp", alt: "Tok Bah Rendang Daging ready meal pack" },
+    image: { src: "/products/rendang-daging-label.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) pack front with a bowl of beef rendang" },
     accent: "#5A2414",
     featured: true,
     priceSGD: 9.90, // Sample price (SGD) — confirm before launch
@@ -129,7 +129,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 3,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-sambal-tumis.webp", alt: "Tok Bah Pes Sambal Tumis cooking paste jar" },
+    image: { src: "/products/pes-sambal-tumis-label.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) pack front with a bowl of red sambal" },
     accent: "#A8261B",
     featured: true,
     priceSGD: 6.90, // Sample price (SGD) — confirm before launch
@@ -155,7 +155,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-rendang.webp", alt: "Tok Bah Pes Rendang cooking paste jar" },
+    image: { src: "/products/pes-rendang-label.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) pack front with a bowl of rendang paste" },
     accent: "#6B2E16",
     priceSGD: 7.50, // Sample price (SGD) — confirm before launch
     netWeight: "250g", // Sample weight — confirm against the final label
@@ -180,7 +180,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 0,
     flavours: ["savoury"],
-    image: { src: "/products/nasi-putih-basmathi.webp", alt: "Tok Bah Nasi Putih Basmathi rice pack" },
+    image: { src: "/products/nasi-putih-basmathi-label.webp", alt: "Tok Bah Nasi Putih Basmathi (Basmathi Rice) pack front with a bowl of white basmathi rice" },
     accent: "#B8893B",
     priceSGD: 3.90, // Sample price (SGD) — confirm before launch
     netWeight: "200g", // Sample weight — confirm against the final label
@@ -207,7 +207,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 0,
     flavours: ["savoury"],
-    image: { src: "/products/rempeyek.webp", alt: "Mak 'Chic' Rempeyek peanut crackers pack" },
+    image: { src: "/products/rempeyek-label.webp", alt: "Mak 'Chic' Keropok Rempeyek round label: peanut crackers in a woven basket" },
     accent: "#C98A2B",
     featured: true,
     priceSGD: 5.90, // Sample price (SGD) — confirm before launch
@@ -233,7 +233,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["cheesy", "spicy"],
-    image: { src: "/products/tempe-chips-cheesy-spicy.webp", alt: "Mak 'Chic' Tempe Chips Cheesy Spicy pack" },
+    image: { src: "/products/tempe-chips-cheesy-spicy-label.webp", alt: "Mak 'Chic' Keropok Tempe Chips Cheesy Spicy round label: tempe chips with cheese and chilli" },
     accent: "#E0562B",
     featured: true,
     priceSGD: 6.50, // Sample price (SGD) — confirm before launch
@@ -259,7 +259,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 0,
     flavours: ["cheesy"],
-    image: { src: "/products/tiub-cheese.webp", alt: "Mak 'Chic' Tiub Cheese snack pack" },
+    image: { src: "/products/tiub-cheese-label.webp", alt: "Mak 'Chic' Keropok Tiub Cheese round label: cheese tubes in a woven basket" },
     accent: "#F5B325",
     priceSGD: 5.50, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label
@@ -284,7 +284,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 0,
     flavours: ["cheesy", "savoury"],
-    image: { src: "/products/kerepek-ubi-cheese.webp", alt: "Mak 'Chic' Kerepek Ubi Cheese cassava chips pack" },
+    image: { src: "/products/kerepek-ubi-cheese-label.webp", alt: "Mak 'Chic' Keropok Kerepek Ubi Cheese round label: cheesy cassava chips with cassava and cheese" },
     accent: "#E8A317",
     featured: true,
     priceSGD: 5.90, // Sample price (SGD) — confirm before launch
@@ -310,7 +310,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 1,
     flavours: ["cheesy", "spicy", "savoury"],
-    image: { src: "/products/ratcha-thai-cheese-fish-skin.webp", alt: "Mak 'Chic' Ratcha Thai Cheese Fish Skin pack" },
+    image: { src: "/products/ratcha-thai-cheese-fish-skin-label.webp", alt: "Mak 'Chic' Keropok Ratcha Thai Cheese Fish Skin round label: crispy fish skin with cheese and chilli" },
     accent: "#2E7D32",
     priceSGD: 8.90, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label

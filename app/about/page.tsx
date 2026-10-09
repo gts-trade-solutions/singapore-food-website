@@ -17,7 +17,7 @@ import { TransitionLink } from "@/components/motion/PageTransition";
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "RJS Foods is the home of Tok Bah and Mak 'Chic' Keropok: heritage Nusantara meals and crunchy snacks, cooked with patience and made to be shared.",
+    "RJS Foods is the home of Tok Bah and Mak 'Chic' Keropok: ready-to-eat Nusantara meals and crunchy crackers, cooked with patience and made to be shared.",
   path: "/about",
 });
 
@@ -65,7 +65,7 @@ export default function AboutPage() {
                 <div className="relative z-10 flex flex-col">
                   <p className="eyebrow !text-tb-gold-light">Tok Bah</p>
                   <p className="mt-2 font-serif text-3xl leading-tight italic sm:text-4xl lg:text-5xl">Tradition, taste, together.</p>
-                  <p className="mt-auto hidden text-sm text-tb-ivory/80 sm:block">2 ready meals · 2 cooking pastes · basmathi rice</p>
+                  <p className="mt-auto hidden text-sm text-tb-ivory/80 sm:block">Ready-to-eat meals · pastes · basmathi rice</p>
                   <TransitionLink href="/tok-bah" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-tb-gold-light underline-offset-4 hover:underline">
                     Explore Tok Bah →
                   </TransitionLink>
@@ -82,8 +82,8 @@ export default function AboutPage() {
               >
                 <div className="relative z-10 flex flex-col">
                   <p className="font-pop text-xs font-extrabold tracking-[0.2em] text-white uppercase">Mak &apos;Chic&apos; Keropok</p>
-                  <p className="mt-2 font-script text-4xl leading-tight sm:text-5xl lg:text-6xl">Rangup. Sedap.</p>
-                  <p className="mt-auto hidden font-pop text-sm text-white sm:block">5 snacks · cheesy, spicy &amp; classic</p>
+                  <p className="mt-2 font-script text-4xl leading-tight sm:text-5xl lg:text-6xl">mmm...dapp!</p>
+                  <p className="mt-auto hidden font-pop text-sm text-white sm:block">5 crackers · cheesy, spicy &amp; classic</p>
                   <TransitionLink href="/mak-chic" className="mt-3 inline-flex items-center gap-1 font-pop text-sm font-semibold text-white underline-offset-4 hover:underline">
                     Explore Mak &apos;Chic&apos; →
                   </TransitionLink>

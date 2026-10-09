@@ -65,12 +65,15 @@ export function ProductCard({
               className="pointer-events-none absolute inset-x-[15%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl transition-transform duration-700 ease-brand group-hover:scale-75"
               style={{ backgroundColor: product.accent }}
             />
-            {/* The image fills the 4:5 frame (pack shots and label photos share this ratio). */}
+            {/* Whole image always visible: tall pack shots fill the 4:5 frame, round labels sit centred in it. */}
             <div
               ref={imageRef}
               // pointer-events-none: the image is lifted in 3D for the tilt, so it would sit above
               // the card link and swallow clicks. Clicks pass through to the link instead.
-              className="pointer-events-none absolute inset-0 transition-transform duration-700 ease-brand group-hover:-translate-y-2 group-hover:scale-[1.05] [transform:translateZ(40px)]"
+              className={cn(
+                "pointer-events-none absolute transition-transform duration-700 ease-brand group-hover:-translate-y-2 group-hover:scale-[1.05] [transform:translateZ(40px)]",
+                isSnack ? "inset-[7%]" : "inset-0",
+              )}
             >
               <ProductImage
                 src={product.image.src}
@@ -78,7 +81,7 @@ export function ProductCard({
                 fill
                 priority={priority}
                 sizes={sizes}
-                className="object-cover drop-shadow-[0_16px_20px_rgb(0_0_0/0.16)]"
+                className="object-contain object-center drop-shadow-[0_16px_20px_rgb(0_0_0/0.16)]"
               />
             </div>
             <span

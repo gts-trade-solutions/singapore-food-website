@@ -9,7 +9,7 @@ import { Marquee } from "@/components/motion/Marquee";
 import { StickerBadge } from "@/components/illustrations/Snacks";
 
 export const metadata = pageMetadata({
-  title: "Mak 'Chic' Keropok: Crispy Malay Snacks",
+  title: "Mak 'Chic' Keropok: Crispy Malay Crackers",
   description:
     "Rempeyek, Cheesy Spicy Tempe Chips, Tiub Cheese, Kerepek Ubi Cheese and Ratcha Thai Cheese Fish Skin. Rangup, sedap keropok delivered in Singapore.",
   path: "/mak-chic",

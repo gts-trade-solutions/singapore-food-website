@@ -5,9 +5,15 @@
 
 export const siteConfig = {
   name: "RJS Foods",
-  legalName: "RJS Foods", // TODO: registered company name (e.g. "RJS Foods Pte. Ltd.")
+  legalName: "RJS Foods",
+  /** Business registration (ACRA). */
+  uen: "53530110C",
+  incorporated: "2026-08-16",
+  registeredActivity: "Wholesale of food, beverages and tobacco n.e.c. (including dried or canned)",
+  // As registered with ACRA. Not shown publicly; the site displays `address` below.
+  registeredLocation: "HDB Public Shelters, Singapore",
   description:
-    "Home of Tok Bah heritage meals and pastes and Mak 'Chic' Keropok snacks. Nusantara flavours, made for Singapore homes.",
+    "Home of Tok Bah ready-to-eat meals and Mak 'Chic' Keropok crackers. Nusantara flavours, made for Singapore homes.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.rjsfoods.sg").replace(/\/$/, ""),
   locale: "en-SG",
   currency: "SGD",

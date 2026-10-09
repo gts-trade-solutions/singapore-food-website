@@ -171,7 +171,7 @@ function RjsScene({ title, slow }: { title: string; slow: boolean }) {
           {title}
         </motion.p>
         <motion.p variants={screenItem} className="mt-3 text-sm text-ivory/75" lang="ms">
-          {slow ? "Almost ready, plating up…" : "Tradisi · Rasa · Bersama — Rangup · Sedap"}
+          {slow ? "Almost ready, plating up…" : "Tradisi · Rasa · Bersama — mmm...dapp!"}
         </motion.p>
         <div className="mt-6">
           <ProgressBar trackClass="bg-ivory/15" barClass="bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />

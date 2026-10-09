@@ -7,8 +7,8 @@ export const contentType = "image/png";
 export default function Image() {
   return renderOgImage({
     eyebrow: "Mak 'Chic' Keropok",
-    title: "Rangup. Sedap. Habis.",
-    subtitle: "Crispy, cheesy, chilli-loud snacks",
+    title: "mmm...dapp!",
+    subtitle: "Crispy, cheesy, chilli-loud crackers",
     tone: "makchic",
   });
 }
