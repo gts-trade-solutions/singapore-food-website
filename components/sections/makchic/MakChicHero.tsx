@@ -66,7 +66,7 @@ export function MakChicHero() {
     <section
       ref={ref}
       aria-labelledby="mc-title"
-      className="bg-halftone section-top relative overflow-hidden bg-mc-cream"
+      className="bg-halftone section-top relative overflow-hidden bg-bg"
     >
       {!reduced && (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">

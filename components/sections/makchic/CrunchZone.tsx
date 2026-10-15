@@ -51,7 +51,7 @@ export function CrunchZone() {
   };
 
   return (
-    <section aria-labelledby="crunch-title" className="relative overflow-hidden bg-mc-cream section-y">
+    <section aria-labelledby="crunch-title" className="relative overflow-hidden bg-bg section-y">
       <div className="container-page grid items-center gap-8 md:grid-cols-2 md:gap-10">
         <div>
           <p className="mb-4 font-pop text-xs font-extrabold tracking-[0.25em] text-mc-red-ink uppercase">The crunch test</p>

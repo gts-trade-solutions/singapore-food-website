@@ -9,7 +9,7 @@ import { ExternalButton } from "@/components/ui/Button";
 /** Instagram-style grid. TODO: swap tiles for real posts (or an Instagram feed integration). */
 export function InstagramGrid() {
   return (
-    <section aria-labelledby="ig-title" className="section-y relative z-10 bg-mc-cream">
+    <section aria-labelledby="ig-title" className="section-y relative z-10 bg-bg">
       <div className="container-page">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:mb-10 md:flex-row md:items-end">
           <div>

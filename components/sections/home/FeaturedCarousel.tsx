@@ -46,7 +46,7 @@ export function FeaturedCarousel({ products }: { products: Product[] }) {
   };
 
   return (
-    <section aria-labelledby="featured-title" className="relative z-10 overflow-hidden bg-mc-cream section-y">
+    <section aria-labelledby="featured-title" className="relative z-10 overflow-hidden bg-bg section-y">
       <div className="container-page mb-8 md:mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="eyebrow mb-4">Featured</p>

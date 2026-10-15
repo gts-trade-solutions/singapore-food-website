@@ -13,7 +13,7 @@
   --tb-gold-ink: #8a6424; /* AA-safe gold for small text on ivory */
   --tb-gold-light: #d9b06a; /* AA-safe gold for small text on teal / dark */
   --tb-ink-deep: #0a2324; /* AA-safe text on gold */
-  --tb-ivory: #faf7f0;
+  --tb-ivory: #fdfcfa;
   --tb-aqua: #e3f1f1;
 
   /* Mak 'Chic' Keropok */
@@ -25,7 +25,7 @@
   --mc-leaf: #2e7d32;
 
   /* Shared */
-  --rjs-ivory: #faf7f0;
+  --rjs-ivory: #fdfcfa;
   --rjs-charcoal: #1e1c1a;
   --rjs-stone: #6b645c;
   --rjs-line: #e4ddd0;
@@ -88,7 +88,7 @@
 }
 
 [data-brand="makchic"] {
-  --brand-bg: var(--mc-cream);
+  --brand-bg: var(--rjs-ivory);
   --brand-surface: #f8e2b5;
   --brand-ink: var(--mc-cocoa);
   --brand-muted: #6e3b28;
