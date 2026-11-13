@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProduct, getRelatedProducts, products } from "@/data/products";
+import { getProduct, getRelatedProducts, isBrandComingSoon, isComingSoon, products } from "@/data/products";
 import { brands } from "@/data/brands";
 import { siteConfig } from "@/lib/config";
 import { jsonLdString, productJsonLd } from "@/lib/seo";
@@ -56,6 +56,14 @@ export default async function ProductPage({ params }: Props) {
   const brand = brands[product.brand];
   const isSnack = product.brand === "mak-chic";
   const related = getRelatedProducts(product);
+  const soon = isComingSoon(product);
+  const otherBrand = isSnack ? "tok-bah" : "mak-chic";
+  // Cross-sell tile under "You might also like": never invites people to order a brand that is not on sale yet.
+  const filler = !isBrandComingSoon("mak-chic")
+    ? { title: isSnack ? "Make it a meal" : "Pair it with keropok", body: "Mix both brands in one WhatsApp order." }
+    : isSnack
+      ? { title: "Hungry now?", body: "Tok Bah meals, pastes and rice are ready to order today." }
+      : { title: "Keropok coming soon", body: "Mak 'Chic' crackers are on their way. Soon you can add a pack of crunch to your order." };
 
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -151,7 +159,12 @@ export default async function ProductPage({ params }: Props) {
                 {
                   id: "delivery",
                   title: "Ordering & delivery",
-                  content: (
+                  content: soon ? (
+                    <p>
+                      {product.name} is coming soon and can&apos;t be ordered yet. Message us on WhatsApp and we&apos;ll let you know
+                      as soon as it&apos;s available.
+                    </p>
+                  ) : (
                     <p>
                       Add to your basket and tap &ldquo;{t.cart.checkout}&rdquo;. We&apos;ll reply on WhatsApp to confirm your order,
                       total and delivery slot within Singapore.
@@ -170,9 +183,12 @@ export default async function ProductPage({ params }: Props) {
             <h2 id="related-title" className={cn("mb-8 text-4xl md:mb-10 md:text-5xl", isSnack ? "text-mc-cocoa" : "text-tb-teal")}>
               {t.product.related}
             </h2>
-            <ProductGrid products={related} tilted={isSnack} fillerTitle={isSnack ? "Make it a meal" : "Pair it with keropok"}
-              fillerBody="Mix both brands in one WhatsApp order."
-              showcase={products.filter((p) => p.brand !== product.brand)}
+            <ProductGrid
+              products={related}
+              tilted={isSnack}
+              fillerTitle={filler.title}
+              fillerBody={filler.body}
+              showcase={products.filter((p) => p.brand === otherBrand)}
             />
           </div>
         </section>

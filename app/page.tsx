@@ -5,7 +5,6 @@ import { OurProducts } from "@/components/sections/home/OurProducts";
 import { TaglineMarquee } from "@/components/sections/home/TaglineMarquee";
 import { StoryPinned } from "@/components/sections/home/StoryPinned";
 import { HowItWorks } from "@/components/sections/home/HowItWorks";
-import { Testimonials } from "@/components/sections/home/Testimonials";
 import { InstagramGrid } from "@/components/sections/home/InstagramGrid";
 import { Newsletter } from "@/components/sections/home/Newsletter";
 
@@ -24,7 +23,6 @@ export default function HomePage() {
       <TaglineMarquee />
       <StoryPinned />
       <HowItWorks />
-      <Testimonials />
       <InstagramGrid />
       <Newsletter />
     </div>

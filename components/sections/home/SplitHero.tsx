@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { getProduct } from "@/data/products";
+import { getProduct, isBrandComingSoon } from "@/data/products";
 import { useUI } from "@/lib/ui-store";
 import { useMediaQuery, usePrefersReducedMotion } from "@/lib/hooks";
 import { SplitText } from "@/components/motion/SplitText";
@@ -86,6 +86,7 @@ export function SplitHero() {
   const kicap = getProduct("ayam-masak-kicap")!;
   const tempe = getProduct("tempe-chips-cheesy-spicy")!;
   const ubi = getProduct("kerepek-ubi-cheese")!;
+  const makChicSoon = isBrandComingSoon("mak-chic");
 
   return (
     <section
@@ -127,7 +128,9 @@ export function SplitHero() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative z-10 max-w-md md:ml-auto md:text-right">
-                <p className="mb-3 font-pop text-xs font-bold tracking-[0.25em] text-white uppercase">Mak &apos;Chic&apos; Keropok · Crackers</p>
+                <p className="mb-3 font-pop text-xs font-bold tracking-[0.25em] text-white uppercase">
+                  Mak &apos;Chic&apos; Keropok · {makChicSoon ? "Coming soon" : "Crackers"}
+                </p>
                 <SplitText
                   as="h2"
                   by="line"
@@ -143,7 +146,7 @@ export function SplitHero() {
                 <div className="mt-6 flex md:justify-end">
                   <MagneticButton>
                     <ButtonLink href="/mak-chic" size="lg" className="!rounded-full !bg-mc-cheese font-pop !text-mc-cocoa">
-                      Get crunching <ArrowIcon />
+                      {makChicSoon ? "Take a peek" : "Get crunching"} <ArrowIcon />
                     </ButtonLink>
                   </MagneticButton>
                 </div>

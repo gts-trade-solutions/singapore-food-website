@@ -65,6 +65,14 @@ export default function ContactPage() {
               </div>
               <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
                 <div>
+                  <dt className="eyebrow mb-1">Phone · WhatsApp</dt>
+                  <dd>
+                    <a href={siteConfig.phoneHref} className="text-base whitespace-nowrap underline-offset-4 hover:underline">
+                      {siteConfig.phone}
+                    </a>
+                  </dd>
+                </div>
+                <div>
                   <dt className="eyebrow mb-1">Email</dt>
                   <dd>
                     <a href={`mailto:${siteConfig.email}`} className="text-base underline-offset-4 hover:underline">
@@ -76,7 +84,7 @@ export default function ContactPage() {
                   <dt className="eyebrow mb-1">Based in</dt>
                   <dd className="text-base">{siteConfig.address}</dd>
                 </div>
-                <div className="sm:col-span-2">
+                <div>
                   <dt className="eyebrow mb-1">Business registration</dt>
                   <dd className="text-base">
                     {siteConfig.legalName} · UEN {siteConfig.uen}

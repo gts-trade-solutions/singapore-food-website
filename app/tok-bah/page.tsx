@@ -1,4 +1,4 @@
-import { getProductsByBrand } from "@/data/products";
+import { getProductsByBrand, isBrandComingSoon } from "@/data/products";
 import { pageMetadata } from "@/lib/seo";
 import { TokBahHero } from "@/components/sections/tokbah/TokBahHero";
 import { HeritageStory } from "@/components/sections/tokbah/HeritageStory";
@@ -18,6 +18,7 @@ export const metadata = pageMetadata({
 
 export default function TokBahPage() {
   const products = getProductsByBrand("tok-bah");
+  const keropokSoon = isBrandComingSoon("mak-chic");
   return (
     <div data-brand="tokbah" className="bg-bg text-ink">
       <TokBahHero />
@@ -49,8 +50,12 @@ export default function TokBahPage() {
           </div>
           <ProductGrid
             products={products}
-            fillerTitle="Pair it with keropok"
-            fillerBody="Rendang on the table, Mak 'Chic' on the side. Add a pack of crunch to your order."
+            fillerTitle={keropokSoon ? "Keropok coming soon" : "Pair it with keropok"}
+            fillerBody={
+              keropokSoon
+                ? "Mak 'Chic' crackers are on their way. Soon you can add a pack of crunch to your rendang order."
+                : "Rendang on the table, Mak 'Chic' on the side. Add a pack of crunch to your order."
+            }
             showcase={getProductsByBrand("mak-chic")}
           />
         </div>

@@ -1,41 +1,4 @@
-/** Editorial content shared across pages. Replace placeholder testimonials with real customer quotes. */
-
-export interface Testimonial {
-  quote: string;
-  name: string;
-  detail: string;
-  brand: "tok-bah" | "mak-chic";
-}
-
-// TODO: replace with real, attributable customer reviews before launch.
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "The rendang tastes like my grandmother's. I keep two packs in the cupboard for days when I'm too tired to cook.",
-    name: "Customer name",
-    detail: "Tampines",
-    brand: "tok-bah",
-  },
-  {
-    quote: "The tempe chips did not survive the drive home. Ordering three next time.",
-    name: "Customer name",
-    detail: "Woodlands",
-    brand: "mak-chic",
-  },
-  {
-    quote:
-      "Sambal tumis paste is a game changer. Sambal udang on a Tuesday night, in ten minutes.",
-    name: "Customer name",
-    detail: "Bedok",
-    brand: "tok-bah",
-  },
-  {
-    quote: "Rempeyek at our Raya open house disappeared before the rendang did.",
-    name: "Customer name",
-    detail: "Jurong West",
-    brand: "mak-chic",
-  },
-];
+/** Editorial content shared across pages. */
 
 export const howItWorks = [
   {

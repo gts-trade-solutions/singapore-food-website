@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState, type RefObject } from "react";
 import { brands, type BrandSlug } from "@/data/brands";
-import { getProductsByBrand, isInStock, type Product } from "@/data/products";
+import { getProductsByBrand, isBrandComingSoon, isComingSoon, isInStock, type Product } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { useUI } from "@/lib/ui-store";
 import { useCart } from "@/lib/cart-store";
@@ -114,6 +114,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
   const brand = brands[product.brand];
   const isSnack = product.brand === "mak-chic";
   const inStock = isInStock(product);
+  const soon = isComingSoon(product);
   const imageRef = useRef<HTMLDivElement>(null);
   const setCursor = useUI((s) => s.setCursorLabel);
 
@@ -142,7 +143,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
             <span
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-[18%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl"
-              style={{ backgroundColor: product.accent }}
+              style={{ backgroundColor: soon ? "var(--color-muted)" : product.accent }}
             />
             <div
               ref={imageRef}
@@ -154,7 +155,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
                 alt={product.image.alt}
                 fill
                 sizes="(min-width: 1536px) 15vw, (min-width: 1024px) 18vw, (min-width: 768px) 30vw, 46vw"
-                className="object-contain object-center drop-shadow-[0_14px_18px_rgb(0_0_0/0.16)]"
+                className={cn("object-contain object-center drop-shadow-[0_14px_18px_rgb(0_0_0/0.16)]", soon && "opacity-70 grayscale")}
               />
             </div>
           </div>
@@ -172,7 +173,12 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
 
             <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-xs">
               <span className="text-muted">{product.netWeight ?? "TBC"}</span>
-              {inStock ? (
+              {soon ? (
+                <span className="inline-flex items-center gap-1 font-semibold text-muted">
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-current" />
+                  Coming soon
+                </span>
+              ) : inStock ? (
                 <span className="inline-flex items-center gap-1 font-semibold text-[#1F7A4D]">
                   <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#1F7A4D]" />
                   In Stock
@@ -182,9 +188,12 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
               )}
             </div>
 
-            <p className="mt-auto pt-1 text-lg font-semibold">{formatPrice(product.priceSGD)}</p>
+            {/* Not on sale yet: no price shown (formatPrice(null) reads "Price TBC"). */}
+            <p className={cn("mt-auto pt-1 text-lg font-semibold", soon && "text-muted")}>
+              {formatPrice(soon ? null : product.priceSGD)}
+            </p>
 
-            {inStock ? (
+            {!soon && inStock ? (
               <AddToCartControl product={product} sourceRef={imageRef} bouncy={isSnack} />
             ) : (
               <button
@@ -192,7 +201,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
                 disabled
                 className="relative z-10 min-h-11 w-full rounded-button border border-line text-sm font-semibold text-muted"
               >
-                Out of stock
+                {soon ? "Coming soon" : "Out of stock"}
               </button>
             )}
           </div>
@@ -230,6 +239,7 @@ export function OurProducts() {
             const items = getProductsByBrand(brand);
             if (items.length === 0) return null;
             const isSnack = brand === "mak-chic";
+            const brandSoon = isBrandComingSoon(brand);
             return (
               <section
                 key={brand}
@@ -255,6 +265,11 @@ export function OurProducts() {
                       </span>
                       <span className="text-sm text-muted md:text-base">{line}</span>
                     </div>
+                    {brandSoon && (
+                      <span className="rounded-full bg-charcoal px-3 py-1 text-xs font-semibold tracking-[0.12em] text-ivory uppercase">
+                        Coming soon
+                      </span>
+                    )}
                   </div>
                   <TransitionLink
                     href={brands[brand].href}

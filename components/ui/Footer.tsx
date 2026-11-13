@@ -1,6 +1,6 @@
 import { siteConfig } from "@/lib/config";
 import { brands } from "@/data/brands";
-import { products } from "@/data/products";
+import { isBrandComingSoon, products } from "@/data/products";
 import { t } from "@/lib/i18n/dictionaries";
 import { TransitionLink } from "@/components/motion/PageTransition";
 import { BatikFlower } from "@/components/illustrations/Batik";
@@ -26,6 +26,7 @@ export function Footer() {
           <div key={slug}>
             <h2 className="mb-4 font-sans text-xs font-semibold tracking-[0.2em] text-tb-gold uppercase">
               {brands[slug].name}
+              {isBrandComingSoon(slug) && <span className="text-ivory/60"> · Coming soon</span>}
             </h2>
             <ul className="space-y-2 text-sm">
               {products
@@ -59,6 +60,11 @@ export function Footer() {
             <li>
               <a href={siteConfig.instagram} target="_blank" rel="noopener noreferrer" className="text-ivory/80 hover:text-ivory hover:underline">
                 Instagram
+              </a>
+            </li>
+            <li>
+              <a href={siteConfig.phoneHref} className="whitespace-nowrap text-ivory/80 hover:text-ivory hover:underline">
+                {siteConfig.phone}
               </a>
             </li>
             <li>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import type { Product } from "@/data/products";
+import { isComingSoon, type Product } from "@/data/products";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Reveal } from "@/components/motion/Reveal";
 import { TransitionLink } from "@/components/motion/PageTransition";
@@ -127,9 +127,15 @@ export function GridFiller({
                   width={300}
                   height={380}
                   sizes="(min-width: 1024px) 12vw, 20vw"
-                  className="h-auto w-full drop-shadow-xl transition-transform duration-500 ease-brand group-hover/fill:-translate-y-2"
+                  className={cn(
+                    "h-auto w-full drop-shadow-xl transition-transform duration-500 ease-brand group-hover/fill:-translate-y-2",
+                    isComingSoon(p) && "opacity-70 grayscale",
+                  )}
                 />
-                <span className="sr-only">{p.name}</span>
+                <span className="sr-only">
+                  {p.name}
+                  {isComingSoon(p) && " (coming soon)"}
+                </span>
               </TransitionLink>
             </li>
           ))}

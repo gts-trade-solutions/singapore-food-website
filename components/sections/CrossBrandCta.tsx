@@ -1,4 +1,5 @@
 import { brands, type BrandSlug } from "@/data/brands";
+import { isBrandComingSoon } from "@/data/products";
 import { ButtonLink, ArrowIcon } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { SplitText } from "@/components/motion/SplitText";
@@ -16,7 +17,9 @@ export function CrossBrandCta({ to }: { to: BrandSlug }) {
     >
       <div aria-hidden="true" className={cn("absolute inset-0 opacity-40", isSnack ? "bg-halftone" : "bg-batik-dots")} />
       <div className="container-page relative flex flex-col items-center text-center">
-        <p className={cn("eyebrow mb-5", isSnack ? "!text-white" : "!text-tb-gold-light")}>Also from our kitchen</p>
+        <p className={cn("eyebrow mb-5", isSnack ? "!text-white" : "!text-tb-gold-light")}>
+          {isBrandComingSoon(to) ? "Coming soon from our kitchen" : "Also from our kitchen"}
+        </p>
         <SplitText
           as="h2"
           id={`cta-${to}`}

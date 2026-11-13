@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { productTypeLabels, spiceLabels, type Product } from "@/data/products";
+import { isComingSoon, isInStock, productTypeLabels, spiceLabels, type Product } from "@/data/products";
 import { brands } from "@/data/brands";
 import { formatPrice } from "@/lib/format";
 import { whatsappUrl } from "@/lib/whatsapp";
@@ -22,6 +22,8 @@ export function ProductPurchase({ product }: { product: Product }) {
   const imageRef = useRef<HTMLDivElement>(null);
   const brand = brands[product.brand];
   const isSnack = product.brand === "mak-chic";
+  const soon = isComingSoon(product);
+  const inStock = isInStock(product);
 
   return (
     <div className="grid gap-8 md:gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
@@ -46,7 +48,7 @@ export function ProductPurchase({ product }: { product: Product }) {
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 90vw"
-                className="object-contain drop-shadow-[0_30px_30px_rgb(0_0_0/0.25)]"
+                className={cn("object-contain drop-shadow-[0_30px_30px_rgb(0_0_0/0.25)]", soon && "opacity-70 grayscale")}
               />
             </div>
             {isSnack && <StickerBadge className="absolute top-4 right-4 w-24 text-xs md:w-28" center={"RANGUP\nSEDAP"} />}
@@ -64,7 +66,11 @@ export function ProductPurchase({ product }: { product: Product }) {
         <p className="mt-2 text-lg text-muted md:text-xl">{product.nameEn}</p>
 
         <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-          <p className="text-3xl font-semibold">{formatPrice(product.priceSGD)}</p>
+          {soon ? (
+            <p className="rounded-full bg-charcoal px-4 py-1.5 text-sm font-semibold tracking-[0.12em] text-ivory uppercase">Coming soon</p>
+          ) : (
+            <p className="text-3xl font-semibold">{formatPrice(product.priceSGD)}</p>
+          )}
           <span className="h-6 w-px bg-line" aria-hidden="true" />
           <div className="text-sm">
             <span className="sr-only">{t.product.spice}: </span>
@@ -74,18 +80,34 @@ export function ProductPurchase({ product }: { product: Product }) {
 
         <p className="mt-5 max-w-xl text-base leading-relaxed md:text-lg">{product.description}</p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <QuantitySelector value={qty} onChange={setQty} />
-          <AddToCartButton product={product} quantity={qty} sourceRef={imageRef} size="lg" bouncy={isSnack} className="flex-1 sm:flex-none" />
-        </div>
+        {soon || !inStock ? (
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              disabled
+              className="min-h-13 flex-1 rounded-button border border-line px-8 text-base font-semibold text-muted sm:flex-none"
+            >
+              {soon ? "Coming soon" : "Out of stock"}
+            </button>
+          </div>
+        ) : (
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <QuantitySelector value={qty} onChange={setQty} />
+            <AddToCartButton product={product} quantity={qty} sourceRef={imageRef} size="lg" bouncy={isSnack} className="flex-1 sm:flex-none" />
+          </div>
+        )}
         <a
-          href={whatsappUrl(`Hi RJS Foods! I have a question about ${product.name} (${brand.name}).`)}
+          href={whatsappUrl(
+            soon
+              ? `Hi RJS Foods! Please let me know when ${product.name} (${brand.name}) is available.`
+              : `Hi RJS Foods! I have a question about ${product.name} (${brand.name}).`,
+          )}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline"
         >
           <WhatsAppIcon className="h-4 w-4 text-[#1F7A4D]" />
-          Questions? Ask us on WhatsApp
+          {soon ? "Tell me when it launches" : "Questions? Ask us on WhatsApp"}
         </a>
 
         {/* Key facts at a glance; unconfirmed values read "TBC" (see data/products.ts). */}
@@ -94,7 +116,7 @@ export function ProductPurchase({ product }: { product: Product }) {
             { k: "Type", v: productTypeLabels[product.type].replace(/s$/, "") },
             { k: t.product.spice, v: spiceLabels[product.spiceLevel] },
             { k: t.product.netWeight, v: product.netWeight ?? "TBC" },
-            { k: "Ordering", v: "Confirmed on WhatsApp" },
+            { k: "Ordering", v: soon ? "Coming soon" : "Confirmed on WhatsApp" },
           ].map((f) => (
             <div key={f.k} className={cn("rounded-xl p-3 md:p-4", isSnack ? "border-2 border-mc-cocoa/20 bg-white/60" : "bg-tb-aqua/60")}>
               <dt className="text-xs tracking-[0.12em] text-muted uppercase">{f.k}</dt>

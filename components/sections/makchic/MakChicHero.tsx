@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef, type ComponentType } from "react";
-import { getProduct } from "@/data/products";
+import { getProduct, isBrandComingSoon } from "@/data/products";
 import { usePrefersReducedMotion } from "@/lib/hooks";
 import { SplitText } from "@/components/motion/SplitText";
 import { MagneticButton } from "@/components/motion/MagneticButton";
@@ -60,6 +60,7 @@ export function MakChicHero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const tempe = getProduct("tempe-chips-cheesy-spicy")!;
   const rempeyek = getProduct("rempeyek")!;
+  const soon = isBrandComingSoon("mak-chic");
   const packY = useSpring(useTransform(scrollYProgress, [0, 1], [0, -60]), { stiffness: 120, damping: 14 });
 
   return (
@@ -78,9 +79,16 @@ export function MakChicHero() {
 
       <div className="container-page relative grid items-center gap-8 md:gap-10 lg:grid-cols-2">
         <div className="relative z-10">
-          <p className="mb-5 inline-flex -rotate-2 rounded-full border-[3px] border-mc-cocoa bg-mc-cheese px-4 py-1.5 font-pop text-xs font-extrabold tracking-[0.2em] text-mc-cocoa uppercase shadow-card">
-            Keropok · Crackers
-          </p>
+          <div className="mb-5 flex flex-wrap items-center gap-2">
+            <p className="inline-flex -rotate-2 rounded-full border-[3px] border-mc-cocoa bg-mc-cheese px-4 py-1.5 font-pop text-xs font-extrabold tracking-[0.2em] text-mc-cocoa uppercase shadow-card">
+              Keropok · Crackers
+            </p>
+            {soon && (
+              <p className="inline-flex rotate-2 rounded-full border-[3px] border-mc-cocoa bg-mc-cocoa px-4 py-1.5 font-pop text-xs font-extrabold tracking-[0.2em] text-mc-cream uppercase shadow-card">
+                Coming soon
+              </p>
+            )}
+          </div>
           <h1 id="mc-title" className="relative">
             <span className="sr-only">Mak &apos;Chic&apos; Keropok crackers: mmm...dapp!</span>
             <span aria-hidden="true" className="relative block">
@@ -106,7 +114,7 @@ export function MakChicHero() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <MagneticButton>
               <ButtonLink href="#mc-products" size="lg" className="font-pop shadow-card">
-                Grab a pack <ArrowIcon />
+                {soon ? "See the range" : "Grab a pack"} <ArrowIcon />
               </ButtonLink>
             </MagneticButton>
             <ButtonLink href="#flavour-picker" variant="ghost" size="lg" className="font-pop">

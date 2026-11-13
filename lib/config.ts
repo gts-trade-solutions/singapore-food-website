@@ -17,7 +17,11 @@ export const siteConfig = {
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.rjsfoods.sg").replace(/\/$/, ""),
   locale: "en-SG",
   currency: "SGD",
-  whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, ""),
+  /** Business phone, as displayed. Also the WhatsApp number that receives orders. */
+  phone: "+65 8011 4353",
+  phoneHref: "tel:+6580114353",
+  // Digits only, international format. NEXT_PUBLIC_WHATSAPP_NUMBER overrides it (e.g. for testing).
+  whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6580114353").replace(/\D/g, ""),
   email: "hello@rjsfoods.sg", // TODO: real enquiries inbox
   instagram: "https://www.instagram.com/", // TODO: real Instagram profile URL
   address: "Singapore", // TODO: business address for stockist/wholesale enquiries

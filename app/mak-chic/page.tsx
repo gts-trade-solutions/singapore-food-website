@@ -1,4 +1,4 @@
-import { getProductsByBrand } from "@/data/products";
+import { getProductsByBrand, isBrandComingSoon } from "@/data/products";
 import { pageMetadata } from "@/lib/seo";
 import { MakChicHero } from "@/components/sections/makchic/MakChicHero";
 import { FlavourPicker } from "@/components/sections/makchic/FlavourPicker";
@@ -11,12 +11,13 @@ import { StickerBadge } from "@/components/illustrations/Snacks";
 export const metadata = pageMetadata({
   title: "Mak 'Chic' Keropok: Crispy Malay Crackers",
   description:
-    "Rempeyek, Cheesy Spicy Tempe Chips, Tiub Cheese, Kerepek Ubi Cheese and Ratcha Thai Cheese Fish Skin. Rangup, sedap keropok delivered in Singapore.",
+    "Rempeyek, Cheesy Spicy Tempe Chips, Tiub Cheese, Kerepek Ubi Cheese and Ratcha Thai Cheese Fish Skin. Rangup, sedap keropok, coming soon to Singapore.",
   path: "/mak-chic",
 });
 
 export default function MakChicPage() {
   const products = getProductsByBrand("mak-chic");
+  const soon = isBrandComingSoon("mak-chic");
   return (
     <div data-brand="makchic" className="bg-bg font-pop text-ink">
       <MakChicHero />
@@ -38,7 +39,7 @@ export default function MakChicPage() {
         <div className="container-page">
           <div className="mb-8 md:mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="mb-4 text-xs font-extrabold tracking-[0.25em] text-mc-red-ink uppercase">The whole gang</p>
+              <p className="mb-4 text-xs font-extrabold tracking-[0.25em] text-mc-red-ink uppercase">{soon ? "Coming soon" : "The whole gang"}</p>
               <h2 id="mc-products-title" className="text-[clamp(2.75rem,6vw,5rem)] leading-none text-mc-cocoa">
                 Five ways to crunch
               </h2>
@@ -48,8 +49,12 @@ export default function MakChicPage() {
           <ProductGrid
             products={products}
             tilted
-            fillerTitle="Make it a meal"
-            fillerBody="Keropok tastes even better next to Tok Bah rendang and rice. Mix both brands in one order."
+            fillerTitle={soon ? "Hungry now?" : "Make it a meal"}
+            fillerBody={
+              soon
+                ? "Our keropok is on its way. Tok Bah meals, pastes and rice are ready to order today."
+                : "Keropok tastes even better next to Tok Bah rendang and rice. Mix both brands in one order."
+            }
             showcase={getProductsByBrand("tok-bah")}
           />
         </div>

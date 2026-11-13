@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import type { Product } from "@/data/products";
+import { isComingSoon, isInStock, type Product } from "@/data/products";
 import { brands } from "@/data/brands";
 import { formatPrice } from "@/lib/format";
 import { useUI } from "@/lib/ui-store";
@@ -40,6 +40,7 @@ export function ProductCard({
   const imageRef = useRef<HTMLDivElement>(null);
   const setCursor = useUI((s) => s.setCursorLabel);
   const isSnack = product.brand === "mak-chic";
+  const soon = isComingSoon(product);
   const angle = tilted ? (index % 2 === 0 ? -1.5 : 1.5) : 0;
 
   return (
@@ -63,16 +64,16 @@ export function ProductCard({
             <span
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-[15%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl transition-transform duration-700 ease-brand group-hover:scale-75"
-              style={{ backgroundColor: product.accent }}
+              style={{ backgroundColor: soon ? "var(--color-muted)" : product.accent }}
             />
-            {/* Whole image always visible: tall pack shots fill the 4:5 frame, round labels sit centred in it. */}
+            {/* Whole image always visible: pack shots sit inside the 4:5 frame, round labels centred in it. */}
             <div
               ref={imageRef}
               // pointer-events-none: the image is lifted in 3D for the tilt, so it would sit above
               // the card link and swallow clicks. Clicks pass through to the link instead.
               className={cn(
                 "pointer-events-none absolute transition-transform duration-700 ease-brand group-hover:-translate-y-2 group-hover:scale-[1.05] [transform:translateZ(40px)]",
-                isSnack ? "inset-[7%]" : "inset-0",
+                isSnack ? "inset-[7%]" : "inset-[6%]",
               )}
             >
               <ProductImage
@@ -81,7 +82,10 @@ export function ProductCard({
                 fill
                 priority={priority}
                 sizes={sizes}
-                className="object-contain object-center drop-shadow-[0_16px_20px_rgb(0_0_0/0.16)]"
+                className={cn(
+                  "object-contain object-center drop-shadow-[0_16px_20px_rgb(0_0_0/0.16)]",
+                  soon && "opacity-70 grayscale",
+                )}
               />
             </div>
             <span
@@ -92,10 +96,16 @@ export function ProductCard({
             >
               {brand.shortName}
             </span>
-            {/* Quick add: always visible, sits above the stretched card link. */}
-            <div className="absolute right-2.5 bottom-2.5 z-10 sm:right-3 sm:bottom-3">
-              <AddToCartButton product={product} sourceRef={imageRef} bouncy={isSnack} variant="icon" className="shadow-card" />
-            </div>
+            {soon || !isInStock(product) ? (
+              <span className="pointer-events-none absolute right-2.5 bottom-2.5 rounded-full bg-charcoal px-2.5 py-1 text-[0.62rem] font-semibold tracking-[0.12em] text-ivory uppercase shadow-card sm:right-3 sm:bottom-3 sm:text-[0.7rem]">
+                {soon ? "Coming soon" : "Out of stock"}
+              </span>
+            ) : (
+              /* Quick add: always visible, sits above the stretched card link. */
+              <div className="absolute right-2.5 bottom-2.5 z-10 sm:right-3 sm:bottom-3">
+                <AddToCartButton product={product} sourceRef={imageRef} bouncy={isSnack} variant="icon" className="shadow-card" />
+              </div>
+            )}
           </div>
 
           <div className="flex flex-1 flex-col gap-1 p-3 sm:p-4 md:gap-1.5">
@@ -110,14 +120,21 @@ export function ProductCard({
             <p className="line-clamp-1 text-xs text-muted sm:text-sm">{product.nameEn}</p>
             <div className="mt-auto flex items-end justify-between gap-2 pt-2">
               <SpiceMeter level={product.spiceLevel} showLabel={false} />
-              <span className="relative block h-6 overflow-hidden text-right">
-                <span className="block text-sm font-semibold transition-transform sm:text-base duration-500 ease-brand group-hover:-translate-y-full">
-                  {formatPrice(product.priceSGD)}
-                </span>
-                <span aria-hidden="true" className="absolute inset-0 translate-y-full text-sm font-semibold whitespace-nowrap text-accent-ink sm:text-base transition-transform duration-500 ease-brand group-hover:translate-y-0">
+              {soon ? (
+                // Not on sale yet: no price, just the way into the product page.
+                <span aria-hidden="true" className="block h-6 text-sm font-semibold whitespace-nowrap text-accent-ink sm:text-base">
                   {t.product.view} →
                 </span>
-              </span>
+              ) : (
+                <span className="relative block h-6 overflow-hidden text-right">
+                  <span className="block text-sm font-semibold transition-transform sm:text-base duration-500 ease-brand group-hover:-translate-y-full">
+                    {formatPrice(product.priceSGD)}
+                  </span>
+                  <span aria-hidden="true" className="absolute inset-0 translate-y-full text-sm font-semibold whitespace-nowrap text-accent-ink sm:text-base transition-transform duration-500 ease-brand group-hover:translate-y-0">
+                    {t.product.view} →
+                  </span>
+                </span>
+              )}
             </div>
           </div>
         </div>

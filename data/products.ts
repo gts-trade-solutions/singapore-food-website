@@ -43,6 +43,11 @@ export interface Product {
   storage: string | null;
   /** Stock status for the "In Stock" label. Omitted = in stock. Set to false to show "Out of stock". */
   inStock?: boolean;
+  /**
+   * Not on sale yet: shown greyed out with a "Coming soon" label and cannot be added to the basket.
+   * Remove the flag on launch day and the product (and its brand's copy) goes live everywhere.
+   */
+  comingSoon?: boolean;
 }
 
 export const productTypeLabels: Record<ProductType, string> = {
@@ -77,7 +82,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 1,
     flavours: ["sweet", "savoury"],
-    image: { src: "/products/ayam-masak-kicap-label.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) pack front with a bowl of chicken in soy gravy" },
+    image: { src: "/products/ayam-masak-kicap-pack.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) box, 180g, with a bowl of chicken in dark soy gravy" },
     accent: "#7A3E1D",
     featured: true,
     priceSGD: 7.90, // Sample price (SGD) — confirm before launch
@@ -103,7 +108,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/rendang-daging-label.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) pack front with a bowl of beef rendang" },
+    image: { src: "/products/rendang-daging-pack.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) box, 180g, with a bowl of beef rendang" },
     accent: "#5A2414",
     featured: true,
     priceSGD: 9.90, // Sample price (SGD) — confirm before launch
@@ -129,7 +134,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 3,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-sambal-tumis-label.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) pack front with a bowl of red sambal" },
+    image: { src: "/products/pes-sambal-tumis-pack.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) box, 250g, with a bowl of red sambal" },
     accent: "#A8261B",
     featured: true,
     priceSGD: 6.90, // Sample price (SGD) — confirm before launch
@@ -155,7 +160,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-rendang-label.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) pack front with a bowl of rendang paste" },
+    image: { src: "/products/pes-rendang-pack.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) box, 250g, with a bowl of rendang paste" },
     accent: "#6B2E16",
     priceSGD: 7.50, // Sample price (SGD) — confirm before launch
     netWeight: "250g", // Sample weight — confirm against the final label
@@ -209,6 +214,7 @@ export const products: Product[] = [
     flavours: ["savoury"],
     image: { src: "/products/rempeyek-label.webp", alt: "Mak 'Chic' Keropok Rempeyek round label: peanut crackers in a woven basket" },
     accent: "#C98A2B",
+    comingSoon: true,
     featured: true,
     priceSGD: 5.90, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label
@@ -235,6 +241,7 @@ export const products: Product[] = [
     flavours: ["cheesy", "spicy"],
     image: { src: "/products/tempe-chips-cheesy-spicy-label.webp", alt: "Mak 'Chic' Keropok Tempe Chips Cheesy Spicy round label: tempe chips with cheese and chilli" },
     accent: "#E0562B",
+    comingSoon: true,
     featured: true,
     priceSGD: 6.50, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label
@@ -261,6 +268,7 @@ export const products: Product[] = [
     flavours: ["cheesy"],
     image: { src: "/products/tiub-cheese-label.webp", alt: "Mak 'Chic' Keropok Tiub Cheese round label: cheese tubes in a woven basket" },
     accent: "#F5B325",
+    comingSoon: true,
     priceSGD: 5.50, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label
     ingredients: null, // TODO
@@ -286,6 +294,7 @@ export const products: Product[] = [
     flavours: ["cheesy", "savoury"],
     image: { src: "/products/kerepek-ubi-cheese-label.webp", alt: "Mak 'Chic' Keropok Kerepek Ubi Cheese round label: cheesy cassava chips with cassava and cheese" },
     accent: "#E8A317",
+    comingSoon: true,
     featured: true,
     priceSGD: 5.90, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label
@@ -312,6 +321,7 @@ export const products: Product[] = [
     flavours: ["cheesy", "spicy", "savoury"],
     image: { src: "/products/ratcha-thai-cheese-fish-skin-label.webp", alt: "Mak 'Chic' Keropok Ratcha Thai Cheese Fish Skin round label: crispy fish skin with cheese and chilli" },
     accent: "#2E7D32",
+    comingSoon: true,
     priceSGD: 8.90, // Sample price (SGD) — confirm before launch
     netWeight: "100g", // Sample weight — confirm against the final label
     ingredients: null, // TODO
@@ -323,6 +333,21 @@ export const products: Product[] = [
 
 export function isInStock(product: Product): boolean {
   return product.inStock !== false;
+}
+
+export function isComingSoon(product: Product): boolean {
+  return product.comingSoon === true;
+}
+
+/** Can go in the basket: launched and in stock. */
+export function canOrder(product: Product): boolean {
+  return !isComingSoon(product) && isInStock(product);
+}
+
+/** Every product of the brand is still coming soon (drives brand-level "Coming soon" copy). */
+export function isBrandComingSoon(brand: BrandSlug): boolean {
+  const items = products.filter((p) => p.brand === brand);
+  return items.length > 0 && items.every(isComingSoon);
 }
 
 export function getProduct(slug: string): Product | undefined {

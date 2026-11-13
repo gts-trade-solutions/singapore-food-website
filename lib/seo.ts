@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "./config";
-import type { Product } from "@/data/products";
+import { isComingSoon, isInStock, type Product } from "@/data/products";
 import { brands } from "@/data/brands";
 
 export function pageMetadata({
@@ -40,6 +40,7 @@ export function organizationJsonLd() {
     url: siteConfig.url,
     logo: `${siteConfig.url}/icon.svg`,
     email: siteConfig.email,
+    telephone: siteConfig.phone,
     areaServed: { "@type": "Country", name: "Singapore" },
     brand: Object.values(brands).map((b) => ({
       "@type": "Brand",
@@ -64,14 +65,14 @@ export function productJsonLd(product: Product) {
     brand: { "@type": "Brand", name: brand.name },
     manufacturer: { "@type": "Organization", name: siteConfig.name },
     ...(product.netWeight ? { weight: product.netWeight } : {}),
-    // Offers are only emitted once a real price exists.
-    ...(product.priceSGD != null
+    // Offers are only emitted once a real price exists and the product is on sale.
+    ...(product.priceSGD != null && !isComingSoon(product)
       ? {
           offers: {
             "@type": "Offer",
             price: product.priceSGD.toFixed(2),
             priceCurrency: "SGD",
-            availability: "https://schema.org/InStock",
+            availability: isInStock(product) ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
             url: `${siteConfig.url}/products/${product.slug}`,
             areaServed: "SG",
           },

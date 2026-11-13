@@ -1,6 +1,6 @@
 import { pageMetadata } from "@/lib/seo";
 import { values, stats } from "@/data/content";
-import { getProduct } from "@/data/products";
+import { getProduct, isBrandComingSoon } from "@/data/products";
 import { SplitText } from "@/components/motion/SplitText";
 import { Reveal } from "@/components/motion/Reveal";
 import { DrawLine } from "@/components/motion/DrawLine";
@@ -23,6 +23,7 @@ export const metadata = pageMetadata({
 
 export default function AboutPage() {
   const rendang = getProduct("rendang-daging")!;
+  const makChicSoon = isBrandComingSoon("mak-chic");
   const rempeyek = getProduct("rempeyek")!;
   const sambal = getProduct("pes-sambal-tumis")!;
   const tempe = getProduct("tempe-chips-cheesy-spicy")!;
@@ -83,7 +84,9 @@ export default function AboutPage() {
                 <div className="relative z-10 flex flex-col">
                   <p className="font-pop text-xs font-extrabold tracking-[0.2em] text-white uppercase">Mak &apos;Chic&apos; Keropok</p>
                   <p className="mt-2 font-script text-4xl leading-tight sm:text-5xl lg:text-6xl">mmm...dapp!</p>
-                  <p className="mt-auto hidden font-pop text-sm text-white sm:block">5 crackers · cheesy, spicy &amp; classic</p>
+                  <p className="mt-auto hidden font-pop text-sm text-white sm:block">
+                    {makChicSoon ? "5 crackers · coming soon" : "5 crackers · cheesy, spicy & classic"}
+                  </p>
                   <TransitionLink href="/mak-chic" className="mt-3 inline-flex items-center gap-1 font-pop text-sm font-semibold text-white underline-offset-4 hover:underline">
                     Explore Mak &apos;Chic&apos; →
                   </TransitionLink>

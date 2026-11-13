@@ -35,7 +35,7 @@ Import the repo in Vercel, add the environment variables below, and deploy. No e
 
 | Variable | Required | Example | Purpose |
 | --- | --- | --- | --- |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | `6591234567` | Number that receives orders and enquiries. Digits only, with country code, no `+`. If empty, WhatsApp opens without a recipient. |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | No | `6591234567` | Overrides the number that receives orders and enquiries. Digits only, with country code, no `+`. Defaults to the business number in `lib/config.ts` (`phone`, +65 8011 4353). |
 | `NEXT_PUBLIC_SITE_URL` | Yes (prod) | `https://www.rjsfoods.sg` | Canonical URLs, sitemap, Open Graph and JSON-LD. |
 | `NEXT_PUBLIC_SHOW_CERTIFICATIONS` | No | `true` | Shows certification badges (e.g. halal). **Off by default**; turn on only once certificates are confirmed. Badge details live in `lib/config.ts`. |
 | `NEWSLETTER_WEBHOOK_URL` | No | `https://hooks.zapier.com/...` | Server-only. Newsletter sign-ups are POSTed here as `{ email, source }`. Without it, the form tells people sign-ups open soon and offers WhatsApp updates instead. |
@@ -67,6 +67,7 @@ All product data lives in **`data/products.ts`**.
   accent: "#A8261B",                  // glow colour behind the product
   featured: true,                     // show in the home carousel
   priceSGD: 8.9,                      // null = "Price TBC"
+  comingSoon: true,                   // optional: greyed out, "Coming soon", can't be ordered
   netWeight: "200 g",
   ingredients: ["Chilli", "Anchovies", "…"],
   allergens: ["Fish"],
@@ -77,14 +78,18 @@ All product data lives in **`data/products.ts`**.
 
 That's all. The product page, shop filters, sitemap, Open Graph image and JSON-LD are generated from this data.
 
+### Coming soon
+
+`comingSoon: true` shows a product greyed out with a "Coming soon" label, hides its price and basket button, and drops it from saved baskets. While every product of a brand is coming soon, that brand's hero, home row, footer and cross-sell tiles say so too. All Mak 'Chic' products are currently coming soon: remove the flag from each one on launch day.
+
 ### Placeholders (`TODO`)
 
 Unconfirmed facts are `null` in the data and marked `// TODO`. The site shows them politely ("Price TBC", "To be confirmed"), so it never displays made-up values. Before launch:
 
 - **Products:** `priceSGD`, `netWeight`, `ingredients`, `allergens`, `shelfLife`, `storage` for all 10 products, and check `spiceLevel` and `flavours`.
 - **Images:** `public/products/*.webp` are **placeholder pack illustrations**. Replace them with the real label artwork using the same file names.
-- **Copy:** the testimonials in `data/content.ts` are placeholders, so use real, attributable reviews. Also confirm the Tok Bah name story (`components/sections/tokbah/HeritageStory.tsx`), the About page story, the kitchen process steps and the stats.
-- **Business details:** `legalName`, `email`, `instagram` and `address` in `lib/config.ts`, plus the reply-time line on `/contact`.
+- **Copy:** confirm the Tok Bah name story (`components/sections/tokbah/HeritageStory.tsx`), the About page story, the kitchen process steps and the stats.
+- **Business details:** `legalName`, `email`, `instagram` and `address` in `lib/config.ts` (`phone` is set), plus the reply-time line on `/contact`.
 
 Search the codebase for `TODO` to find all of them.
 
@@ -95,7 +100,7 @@ While prices are `null`, the basket still works: the WhatsApp message lists the 
 ## How ordering works
 
 1. Customers add items to the basket. It's stored in `localStorage` (Zustand `persist`) and survives reloads.
-2. **Order via WhatsApp** opens `wa.me/<NEXT_PUBLIC_WHATSAPP_NUMBER>` with a prefilled message listing items, quantities, line totals and the total in SGD (see `lib/whatsapp.ts`).
+2. **Order via WhatsApp** opens `wa.me/<business number>` with a prefilled message listing items, quantities, line totals and the total in SGD (see `lib/whatsapp.ts`).
 3. The contact form also composes a WhatsApp message (or an email). Nothing is stored on the site.
 
 ---
@@ -109,7 +114,7 @@ components/
   sections/              Page sections, grouped by page (home/, tokbah/, makchic/, shop/, product/, about/, contact/)
   motion/                Motion primitives & site-wide effects (see below)
   illustrations/         SVG art: batik vines/flowers, steam, chilli/peanut/cheese/chip, sticker badge
-data/                    products.ts (catalogue), brands.ts, content.ts (testimonials, values, timeline)
+data/                    products.ts (catalogue), brands.ts, content.ts (values, timeline, stats)
 lib/                     config & flags, cart/UI stores, WhatsApp helpers, SEO/JSON-LD, i18n, GSAP/Lenis loaders
 styles/tokens.css        Design tokens (raw palette + semantic tokens per brand)
 public/products/         Product images
