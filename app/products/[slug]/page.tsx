@@ -102,7 +102,7 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="mt-10 grid gap-8 md:mt-12 md:gap-10 lg:grid-cols-2 lg:gap-12">
           <Reveal>
-            <h2 className={cn("text-4xl md:text-5xl", isSnack ? "text-mc-cocoa" : "text-tb-brown")}>{t.product.serving}</h2>
+            <h2 className={cn("text-4xl md:text-5xl", isSnack ? "text-mc-cocoa" : "text-tb-teal")}>{t.product.serving}</h2>
             {!isSnack && <DrawLine className="mt-4 !max-w-[12rem]" />}
             <ul className="mt-6 space-y-3">
               {product.servingSuggestions.map((s, i) => (
@@ -111,7 +111,7 @@ export default async function ProductPage({ params }: Props) {
                     aria-hidden="true"
                     className={cn(
                       "grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-semibold",
-                      isSnack ? "border-2 border-mc-cocoa bg-mc-cheese text-mc-cocoa" : "bg-tb-brown font-serif text-base text-tb-ivory italic",
+                      isSnack ? "border-2 border-mc-cocoa bg-mc-cheese text-mc-cocoa" : "bg-tb-teal font-serif text-base text-tb-ivory italic",
                     )}
                   >
                     {i + 1}
@@ -180,7 +180,7 @@ export default async function ProductPage({ params }: Props) {
       {related.length > 0 && (
         <section aria-labelledby="related-title" className={cn("section-y", isSnack ? "bg-mc-cheese/30" : "bg-tb-mist/60")}>
           <div className="container-page">
-            <h2 id="related-title" className={cn("mb-8 text-4xl md:mb-10 md:text-5xl", isSnack ? "text-mc-cocoa" : "text-tb-brown")}>
+            <h2 id="related-title" className={cn("mb-8 text-4xl md:mb-10 md:text-5xl", isSnack ? "text-mc-cocoa" : "text-tb-teal")}>
               {t.product.related}
             </h2>
             <ProductGrid

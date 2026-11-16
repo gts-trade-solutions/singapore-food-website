@@ -32,7 +32,7 @@ export function Newsletter() {
   };
 
   return (
-    <section aria-labelledby="newsletter-title" className="relative z-10 overflow-hidden bg-gradient-to-r from-tb-brown to-mc-red section-y text-ivory">
+    <section aria-labelledby="newsletter-title" className="relative z-10 overflow-hidden bg-gradient-to-r from-tb-teal to-mc-red section-y text-ivory">
       <BatikFlower className="pointer-events-none absolute -top-16 -left-16 h-72 w-72 text-tb-gold opacity-20" />
       <Chilli className="pointer-events-none absolute top-10 right-[8%] hidden w-14 rotate-12 md:block" />
       <Peanut className="pointer-events-none absolute right-[18%] bottom-10 hidden w-10 -rotate-12 md:block" />

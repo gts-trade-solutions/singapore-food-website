@@ -83,7 +83,7 @@ export function ProductPurchase({ product }: { product: Product }) {
                 >
                   <span
                     className={cn(
-                      "relative block h-16 overflow-hidden rounded-md bg-white ring-2 ring-line transition group-hover/thumb:ring-tb-gold group-aria-pressed/thumb:ring-tb-brown",
+                      "relative block h-16 overflow-hidden rounded-md bg-white ring-2 ring-line transition group-hover/thumb:ring-tb-gold group-aria-pressed/thumb:ring-tb-teal",
                       thumb.box,
                     )}
                   >
@@ -122,7 +122,7 @@ export function ProductPurchase({ product }: { product: Product }) {
                 className="absolute inset-x-[20%] bottom-[10%] h-[12%] rounded-[50%] opacity-40 blur-2xl"
                 style={{ backgroundColor: product.accent }}
               />
-              {!isSnack && product.type !== "paste" && <Steam className="absolute top-[4%] left-1/2 w-24 -translate-x-1/2 text-tb-brown/40" />}
+              {!isSnack && product.type !== "paste" && <Steam className="absolute top-[4%] left-1/2 w-24 -translate-x-1/2 text-tb-teal/40" />}
               <div ref={imageRef} className="absolute inset-[10%] [transform:translateZ(60px)]">
                 <ProductImage
                   src={product.image.src}
@@ -143,7 +143,7 @@ export function ProductPurchase({ product }: { product: Product }) {
         <p className={cn("mb-3", isSnack ? "font-pop text-xs font-extrabold tracking-[0.2em] text-mc-red-ink uppercase" : "eyebrow")}>
           {brand.name}
         </p>
-        <h1 className={cn("leading-[0.95]", isSnack ? "text-[clamp(2.75rem,5vw,4.5rem)] text-mc-cocoa" : "text-[clamp(2.75rem,5vw,5rem)] text-tb-brown")}>
+        <h1 className={cn("leading-[0.95]", isSnack ? "text-[clamp(2.75rem,5vw,4.5rem)] text-mc-cocoa" : "text-[clamp(2.75rem,5vw,5rem)] text-tb-teal")}>
           {product.name}
         </h1>
         <p className="mt-2 text-lg text-muted md:text-xl">{product.nameEn}</p>

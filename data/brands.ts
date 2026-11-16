@@ -31,7 +31,7 @@ export const brands: Record<BrandSlug, Brand> = {
     ],
     summary:
       "Heritage ready-to-eat meals and cooking pastes, cooked the slow way and packed for the way you live now.",
-    color: "#4E423C",
+    color: "#0F3D3E",
     colorInk: "#FAF7F0",
   },
   "mak-chic": {

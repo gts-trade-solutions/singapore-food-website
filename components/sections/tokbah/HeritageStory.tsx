@@ -21,7 +21,7 @@ const PILLARS = [
 
 export function HeritageStory() {
   return (
-    <section aria-labelledby="heritage-title" className="relative overflow-hidden bg-tb-brown section-y text-tb-ivory">
+    <section aria-labelledby="heritage-title" className="relative overflow-hidden bg-tb-teal section-y text-tb-ivory">
       <BatikFlower className="pointer-events-none absolute -bottom-32 -left-32 h-[30rem] w-[30rem] text-tb-gold opacity-10" />
       <div className="container-page relative grid items-center gap-8 md:gap-10 lg:grid-cols-2">
         <div>

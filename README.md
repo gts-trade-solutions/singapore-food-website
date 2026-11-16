@@ -126,8 +126,8 @@ Theming is driven by a `data-brand` attribute: `rjs` (shared), `tokbah` or `makc
 
 - Pages set `data-brand` on their root, so the server render is already themed.
 - `components/motion/BrandTheme.tsx` keeps `<html data-brand>` in sync with the route, or with the side hovered in the home hero.
-- Raw brand colours are also available directly, e.g. `bg-tb-brown`, `bg-tb-mist`, `text-tb-gold-ink`, `bg-mc-red`, `text-mc-cocoa`.
-- Small text on dark or saturated backgrounds uses AA-safe variants: `tb-gold-ink` or `tb-steel-ink` on ivory and mist, `tb-gold-light` on brown, and white on chilli red.
+- Raw brand colours are also available directly, e.g. `bg-tb-teal`, `bg-tb-mist`, `text-tb-gold-ink`, `bg-mc-red`, `text-mc-cocoa`.
+- Small text on dark or saturated backgrounds uses AA-safe variants: `tb-gold-ink` or `tb-steel-ink` on ivory and mist, `tb-gold-light` on green, and white on chilli red.
 
 ## Motion
 

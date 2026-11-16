@@ -6,14 +6,14 @@
 
 :root {
   /* ---------- Raw palette ---------- */
-  /* Tok Bah: "Elegant Nusantara" palette (steel blue, antique gold and brown on white) */
-  --tb-brown: #4e423c; /* primary: headings, buttons, dark panels */
-  --tb-umber: #6b5a4f; /* lighter brown for gradients and glows on brown */
+  /* Tok Bah: deep green with antique gold, steel blue accents on white */
+  --tb-teal: #0f3d3e; /* primary deep green: headings, buttons, dark panels */
+  --tb-forest: #1f4d36; /* lighter green for gradients and glows on the deep green */
   --tb-steel: #849cae; /* steel blue for decoration and large shapes */
   --tb-steel-ink: #526b80; /* AA-safe steel blue for small text on ivory / mist / cream */
   --tb-gold: #a8966c;
   --tb-gold-ink: #74643f; /* AA-safe gold for small text on ivory / mist */
-  --tb-gold-light: #d6c9a2; /* AA-safe gold for small text on brown / dark */
+  --tb-gold-light: #d6c9a2; /* AA-safe gold for small text on green / dark */
   --tb-ink-deep: #2b2420; /* AA-safe text on gold */
   --tb-ivory: #fdfcfa;
   --tb-mist: #e6ebef; /* light steel-blue surface behind product images and panels */
@@ -45,7 +45,7 @@
   --brand-ink: var(--rjs-charcoal);
   --brand-muted: var(--rjs-stone);
   --brand-line: var(--rjs-line);
-  --brand-primary: var(--tb-brown);
+  --brand-primary: var(--rjs-charcoal);
   --brand-primary-ink: var(--rjs-ivory);
   --brand-accent: var(--tb-gold);
   --brand-accent-ink: var(--tb-gold-ink);
@@ -77,11 +77,11 @@
   --brand-ink: var(--rjs-charcoal);
   --brand-muted: var(--rjs-stone);
   --brand-line: #e2ddd5;
-  --brand-primary: var(--tb-brown);
+  --brand-primary: var(--tb-teal);
   --brand-primary-ink: var(--tb-ivory);
   --brand-accent: var(--tb-gold);
   --brand-accent-ink: var(--tb-gold-ink);
-  --brand-highlight: var(--tb-umber);
+  --brand-highlight: var(--tb-forest);
   --brand-focus: var(--tb-steel-ink);
   --brand-eyebrow: var(--tb-steel-ink);
 
@@ -92,8 +92,8 @@
 
   --brand-radius-card: 0.375rem;
   --brand-radius-button: 0.25rem;
-  --brand-shadow-card: 0 1px 2px rgb(78 66 60 / 0.05), 0 18px 40px -20px rgb(78 66 60 / 0.25);
-  --brand-shadow-lift: 0 2px 6px rgb(78 66 60 / 0.08), 0 40px 70px -30px rgb(78 66 60 / 0.4);
+  --brand-shadow-card: 0 1px 2px rgb(15 61 62 / 0.05), 0 18px 40px -20px rgb(15 61 62 / 0.25);
+  --brand-shadow-lift: 0 2px 6px rgb(15 61 62 / 0.08), 0 40px 70px -30px rgb(15 61 62 / 0.4);
 
   --brand-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --brand-duration: 1100ms;

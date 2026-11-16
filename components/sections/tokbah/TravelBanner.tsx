@@ -72,12 +72,12 @@ export function TravelBanner() {
             as="h2"
             id="tb-travel-title"
             text="Your travel companion"
-            className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-brown"
+            className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-teal"
           />
           <DrawLine className="mt-5 !max-w-xs" />
           <Reveal delay={0.15}>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted md:text-lg">
-              <span lang="ms" className="font-serif text-xl text-tb-brown italic md:text-2xl">
+              <span lang="ms" className="font-serif text-xl text-tb-teal italic md:text-2xl">
                 Rasa tradisi, di mana sahaja.
               </span>{" "}
               Traditional flavour wherever you are. Tok Bah packs slip into a suitcase or a work bag, ready when you are.
@@ -114,7 +114,7 @@ export function TravelBanner() {
           <ul className="grid gap-3 sm:grid-cols-2">
             {PERKS.map((p, i) => (
               <Reveal as="li" key={p.en} delay={i * 0.08} className="flex items-start gap-3 rounded-card bg-tb-ivory p-4 shadow-card">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-tb-gold/60 text-tb-brown">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-tb-gold/60 text-tb-teal">
                   <PerkIcon name={p.icon} />
                 </span>
                 <span>

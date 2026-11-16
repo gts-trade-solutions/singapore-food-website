@@ -16,14 +16,14 @@ export function KitchenTimeline() {
       <span aria-hidden="true" className="absolute top-6 bottom-6 left-6 w-px bg-line" />
       <motion.span
         aria-hidden="true"
-        className="absolute top-6 bottom-6 left-6 w-px origin-top bg-gradient-to-b from-tb-brown via-tb-gold to-mc-red"
+        className="absolute top-6 bottom-6 left-6 w-px origin-top bg-gradient-to-b from-tb-teal via-tb-gold to-mc-red"
         style={{ scaleY }}
       />
       {kitchenTimeline.map((item, i) => (
         <li key={item.step} className="relative grid grid-cols-[3rem_1fr] gap-4 pb-6 last:pb-0 md:gap-5">
           <span
             aria-hidden="true"
-            className="relative z-10 grid h-12 w-12 place-items-center rounded-full border border-tb-gold bg-ivory font-serif text-lg text-tb-brown italic"
+            className="relative z-10 grid h-12 w-12 place-items-center rounded-full border border-tb-gold bg-ivory font-serif text-lg text-tb-teal italic"
           >
             {item.step}
           </span>

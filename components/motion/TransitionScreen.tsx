@@ -149,7 +149,7 @@ function MakChicScene({ title, slow }: { title: string; slow: boolean }) {
 function RjsScene({ title, slow }: { title: string; slow: boolean }) {
   return (
     <>
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-tb-brown via-tb-gold to-mc-red" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />
       <motion.div variants={screenItem} aria-hidden="true" className="absolute -bottom-24 -left-24 h-80 w-80 text-tb-gold">
         <BatikFlower className="spin-slow h-full w-full opacity-10" />
       </motion.div>
@@ -174,7 +174,7 @@ function RjsScene({ title, slow }: { title: string; slow: boolean }) {
           {slow ? "Almost ready, plating up…" : "Tradisi · Rasa · Bersama — mmm...dapp!"}
         </motion.p>
         <div className="mt-6">
-          <ProgressBar trackClass="bg-ivory/15" barClass="bg-gradient-to-r from-tb-brown via-tb-gold to-mc-red" />
+          <ProgressBar trackClass="bg-ivory/15" barClass="bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />
         </div>
       </motion.div>
     </>

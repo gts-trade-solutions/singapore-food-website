@@ -35,7 +35,7 @@ function BrandMark({ brand }: { brand: BrandSlug }) {
         <span aria-hidden="true" className="absolute inset-0 border border-tb-gold/60" />
         <span aria-hidden="true" className={`${corner} -top-1 -left-1 border-t-2 border-l-2`} />
         <span aria-hidden="true" className={`${corner} -right-1 -bottom-1 border-r-2 border-b-2`} />
-        <span className="font-serif text-2xl leading-none font-semibold tracking-[0.12em] text-tb-brown uppercase md:text-3xl">Tok Bah</span>
+        <span className="font-serif text-2xl leading-none font-semibold tracking-[0.12em] text-tb-teal uppercase md:text-3xl">Tok Bah</span>
         <span className="mt-1 text-[0.6rem] font-semibold tracking-[0.3em] text-tb-gold-ink uppercase">Citarasa Nusantara</span>
       </span>
     );
@@ -293,7 +293,7 @@ export function OurProducts() {
                     href={brands[brand].href}
                     className={cn(
                       "inline-flex min-h-11 items-center text-sm font-semibold underline-offset-4 hover:underline",
-                      isSnack ? "font-pop text-mc-red-ink" : "text-tb-brown",
+                      isSnack ? "font-pop text-mc-red-ink" : "text-tb-teal",
                     )}
                   >
                     Explore {brands[brand].shortName} →

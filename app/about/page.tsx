@@ -61,7 +61,7 @@ export default function AboutPage() {
             <ImageReveal className="rounded-card">
               <div
                 data-brand="tokbah"
-                className="bg-batik-dots relative grid aspect-[4/3] grid-cols-[1fr_44%] bg-tb-brown p-5 text-tb-ivory sm:p-7"
+                className="bg-batik-dots relative grid aspect-[4/3] grid-cols-[1fr_44%] bg-tb-teal p-5 text-tb-ivory sm:p-7"
               >
                 <div className="relative z-10 flex flex-col">
                   <p className="eyebrow !text-tb-gold-light">Tok Bah</p>

@@ -93,7 +93,7 @@ export function Footer() {
   return (
     <footer data-brand="rjs" className="relative overflow-hidden bg-tb-mist font-sans text-ink">
       {/* Split identity: Tok Bah brown into gold into chilli red along the top edge. */}
-      <div aria-hidden="true" className="h-1.5 bg-gradient-to-r from-tb-brown via-tb-gold to-mc-red" />
+      <div aria-hidden="true" className="h-1.5 bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />
 
       {/* Soft diagonal light bands on the right. */}
       <div aria-hidden="true" className="pointer-events-none absolute top-1.5 right-0 bottom-0 w-2/3 overflow-hidden">

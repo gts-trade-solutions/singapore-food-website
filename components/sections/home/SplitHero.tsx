@@ -182,11 +182,11 @@ export function SplitHero() {
           {/* Clip-path is driven by a CSS variable so the server render is already split 50/50. */}
           <div
             data-brand="tokbah"
-            className="relative order-1 w-full shrink-0 snap-start bg-tb-brown text-tb-ivory md:absolute md:inset-0 md:z-10 md:[clip-path:inset(0_calc(100%-var(--split))_0_0)] md:transition-[clip-path] md:duration-1000 md:ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none"
+            className="relative order-1 w-full shrink-0 snap-start bg-tb-teal text-tb-ivory md:absolute md:inset-0 md:z-10 md:[clip-path:inset(0_calc(100%-var(--split))_0_0)] md:transition-[clip-path] md:duration-1000 md:ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none"
             style={{ "--split": `${split}%` } as CSSProperties}
             onPointerEnter={() => hover("left")}
           >
-            <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,#6B5A4F_0%,transparent_60%)] opacity-80" />
+            <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,#1F4D36_0%,transparent_60%)] opacity-80" />
             <BatikFlower className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 text-tb-gold opacity-15" />
             <BatikFlower className="pointer-events-none absolute bottom-10 left-[36%] hidden h-40 w-40 text-tb-gold opacity-10 md:block" />
 
@@ -286,7 +286,7 @@ function TrustRow() {
       <ul className="container-page grid grid-cols-2 gap-x-4 gap-y-3 py-4 md:grid-cols-4 md:py-5">
         {TRUST_POINTS.map((t) => (
           <li key={t.label} className="flex items-center gap-3 text-sm font-medium text-charcoal">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-tb-mist text-tb-brown">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-tb-mist text-tb-teal">
               <svg
                 viewBox="0 0 24 24"
                 className="h-[18px] w-[18px]"

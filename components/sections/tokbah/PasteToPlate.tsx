@@ -132,7 +132,7 @@ export function PasteToPlate() {
         {/* Copy */}
         <div>
           <p className="eyebrow mb-4">From paste to plate</p>
-          <h2 id="ptp-title" className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-brown">
+          <h2 id="ptp-title" className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-teal">
             Rendang, the easy way
           </h2>
           <DrawLine className="mt-6 !max-w-[14rem]" />
@@ -146,7 +146,7 @@ export function PasteToPlate() {
               >
                 <div>
                   <p className="font-serif text-lg text-tb-gold-ink italic md:text-xl">Step {i + 1}</p>
-                  <h3 className={cn("mt-1 text-tb-brown", enhanced ? "text-4xl" : "text-2xl md:text-3xl")}>{step.title}</h3>
+                  <h3 className={cn("mt-1 text-tb-teal", enhanced ? "text-4xl" : "text-2xl md:text-3xl")}>{step.title}</h3>
                   <p className={cn("mt-2 max-w-md leading-relaxed text-muted", enhanced ? "text-lg" : "text-sm md:text-base")}>{step.body}</p>
                 </div>
                 {!enhanced && (
@@ -160,7 +160,7 @@ export function PasteToPlate() {
                     )}
                     {i === 2 && (
                       <div className="absolute inset-x-0 bottom-0 h-20">
-                        <Steam className="absolute -top-14 left-1/2 w-20 -translate-x-1/2 text-tb-brown/40" />
+                        <Steam className="absolute -top-14 left-1/2 w-20 -translate-x-1/2 text-tb-teal/40" />
                         <Wok />
                         <span className="absolute top-2 left-1/2 h-7 w-28 -translate-x-1/2 rounded-full bg-[#5A2414]" />
                       </div>
@@ -187,7 +187,7 @@ export function PasteToPlate() {
             <div className="absolute inset-[10%] rounded-full bg-tb-ivory" />
 
             <div data-wok-group className="absolute inset-x-[14%] bottom-[18%] h-[30%]">
-              <div data-wok-steam className="absolute -top-[70%] left-1/2 w-[40%] -translate-x-1/2 text-tb-brown/40">
+              <div data-wok-steam className="absolute -top-[70%] left-1/2 w-[40%] -translate-x-1/2 text-tb-teal/40">
                 <Steam />
               </div>
               <div data-wok className="absolute inset-0">
@@ -214,7 +214,7 @@ export function PasteToPlate() {
             </div>
 
             <div data-plate className="absolute inset-x-[10%] top-[30%] h-[44%]">
-              <div data-plate-steam className="absolute -top-[30%] left-1/2 w-[30%] -translate-x-1/2 text-tb-brown/40">
+              <div data-plate-steam className="absolute -top-[30%] left-1/2 w-[30%] -translate-x-1/2 text-tb-teal/40">
                 <Steam />
               </div>
               <Plate />

@@ -44,7 +44,7 @@ export function IntroLoader() {
 
   return (
     <div aria-hidden="true" className="intro-loader pointer-events-none fixed inset-0 z-[100]">
-      <div className="intro-curtain-top absolute inset-x-0 top-0 h-1/2 bg-tb-brown" />
+      <div className="intro-curtain-top absolute inset-x-0 top-0 h-1/2 bg-tb-teal" />
       <div className="intro-curtain-bottom absolute inset-x-0 bottom-0 h-1/2 bg-mc-red" />
       <div className="intro-mark absolute inset-0 grid place-items-center">
         <div className="flex flex-col items-center gap-5">
