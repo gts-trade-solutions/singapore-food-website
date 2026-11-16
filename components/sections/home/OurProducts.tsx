@@ -16,7 +16,10 @@ import { Tilt } from "@/components/motion/Tilt";
 import { TransitionLink } from "@/components/motion/PageTransition";
 import { ButtonLink, ArrowIcon } from "@/components/ui/Button";
 import { ProductImage } from "@/components/ui/ProductImage";
-import { GridFiller, fillerSpan, gridClasses, useGridColumns } from "@/components/sections/ProductGrid";
+import { GridFiller, fillerSpan, gridClasses, gridSizes, useGridColumns } from "@/components/sections/ProductGrid";
+import { DishWithPack } from "@/components/ui/DishWithPack";
+
+const CARD_SIZES = gridSizes.row;
 
 const ROWS: { brand: BrandSlug; line: string }[] = [
   { brand: "tok-bah", line: "Authentic flavours, ready for your table" },
@@ -116,7 +119,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
   const isSnack = product.brand === "mak-chic";
   const inStock = isInStock(product);
   const soon = isComingSoon(product);
-  const fullBleed = product.image.fullBleed === true;
+  const hasPhoto = Boolean(product.photo);
   const imageRef = useRef<HTMLDivElement>(null);
   const setCursor = useUI((s) => s.setCursorLabel);
 
@@ -135,15 +138,15 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
             isSnack && "border-[3px] border-mc-cocoa",
           )}
         >
-          {/* Fixed 3:4 frame (the box-photo shape) so every card is the same height. Box photos fill it;
-              cut-outs float inside it, whole and uncropped. */}
+          {/* Fixed 4:3 frame so every card is the same height: the dish photo fills it with the pack in the
+              corner; products without a dish photo (round labels) float inside it, whole and uncropped. */}
           <div
             className={cn(
-              "relative aspect-[3/4] overflow-hidden",
-              fullBleed ? "bg-surface" : isSnack ? "bg-halftone bg-mc-cream" : "bg-batik-dots bg-tb-ivory",
+              "relative aspect-[4/3] overflow-hidden",
+              hasPhoto ? "bg-surface" : isSnack ? "bg-halftone bg-mc-cream" : "bg-batik-dots bg-tb-ivory",
             )}
           >
-            {!fullBleed && (
+            {!hasPhoto && (
               <span
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-[18%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl"
@@ -155,21 +158,22 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
               // pointer-events-none: the lifted (3D) image would otherwise swallow clicks meant for the card link.
               className={cn(
                 "pointer-events-none absolute transition-transform duration-700 ease-brand",
-                fullBleed
+                hasPhoto
                   ? "inset-0 group-hover:scale-[1.04]"
                   : "inset-[6%] group-hover:-translate-y-2 group-hover:scale-[1.04] [transform:translateZ(30px)]",
               )}
             >
-              <ProductImage
-                src={product.image.src}
-                alt={product.image.alt}
-                fill
-                sizes="(min-width: 1536px) 15vw, (min-width: 1024px) 18vw, (min-width: 768px) 30vw, 46vw"
-                className={cn(
-                  fullBleed ? "object-cover" : "object-contain object-center drop-shadow-[0_14px_18px_rgb(0_0_0/0.16)]",
-                  soon && "opacity-70 grayscale",
-                )}
-              />
+              {hasPhoto ? (
+                <DishWithPack product={product} sizes={CARD_SIZES} dimmed={soon} />
+              ) : (
+                <ProductImage
+                  src={product.image.src}
+                  alt={product.image.alt}
+                  fill
+                  sizes={CARD_SIZES}
+                  className={cn("object-contain object-center drop-shadow-[0_14px_18px_rgb(0_0_0/0.16)]", soon && "opacity-70 grayscale")}
+                />
+              )}
             </div>
           </div>
 

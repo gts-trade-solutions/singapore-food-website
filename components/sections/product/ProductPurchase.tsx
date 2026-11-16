@@ -19,6 +19,7 @@ import { StickerBadge } from "@/components/illustrations/Snacks";
 /** Top of the product page: big tilting image + buy box. */
 export function ProductPurchase({ product }: { product: Product }) {
   const [qty, setQty] = useState(1);
+  const [view, setView] = useState<"dish" | "pack">("dish");
   const imageRef = useRef<HTMLDivElement>(null);
   const brand = brands[product.brand];
   const isSnack = product.brand === "mak-chic";
@@ -28,7 +29,72 @@ export function ProductPurchase({ product }: { product: Product }) {
   return (
     <div className="grid gap-8 md:gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
       <div className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:self-start">
-        {product.image.fullBleed ? (
+        {product.photo ? (
+          // Dish photo with the pack shot in the corner; the thumbnails switch to the full pack.
+          <div>
+            <Tilt max={6} className={cn("mx-auto w-full", view === "dish" ? "max-w-xl" : "max-w-sm")}>
+              <div ref={imageRef} className="relative overflow-hidden rounded-card bg-tb-ivory shadow-card">
+                {view === "dish" ? (
+                  <div className="relative aspect-[3/2]">
+                    <ProductImage
+                      src={product.photo.src}
+                      alt={product.photo.alt}
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 36rem, 92vw"
+                      className={cn("object-cover", soon && "opacity-70 grayscale")}
+                    />
+                    <span className="pointer-events-none absolute bottom-[6%] left-[5%] block w-[22%] -rotate-3 overflow-hidden rounded-[3px] bg-white shadow-lift ring-2 ring-white">
+                      <ProductImage
+                        src={product.image.src}
+                        alt={`${product.name} pack`}
+                        width={880}
+                        height={1180}
+                        sizes="9rem"
+                        className={cn("block h-auto w-full", soon && "opacity-70 grayscale")}
+                      />
+                    </span>
+                  </div>
+                ) : (
+                  <ProductImage
+                    src={product.image.src}
+                    alt={product.image.alt}
+                    width={880}
+                    height={1180}
+                    sizes="(min-width: 1024px) 24rem, 92vw"
+                    className={cn("block h-auto w-full", soon && "opacity-70 grayscale")}
+                  />
+                )}
+              </div>
+            </Tilt>
+            <div role="group" aria-label="Product pictures" className="mt-4 flex justify-center gap-3">
+              {(
+                [
+                  { key: "dish", label: "Dish", src: product.photo.src, box: "w-24" },
+                  { key: "pack", label: "Pack", src: product.image.src, box: "w-12" },
+                ] as const
+              ).map((thumb) => (
+                <button
+                  key={thumb.key}
+                  type="button"
+                  aria-pressed={view === thumb.key}
+                  onClick={() => setView(thumb.key)}
+                  className="group/thumb flex flex-col items-center gap-1 text-xs font-semibold text-muted aria-pressed:text-ink"
+                >
+                  <span
+                    className={cn(
+                      "relative block h-16 overflow-hidden rounded-md bg-white ring-2 ring-line transition group-hover/thumb:ring-tb-gold group-aria-pressed/thumb:ring-tb-brown",
+                      thumb.box,
+                    )}
+                  >
+                    <ProductImage src={thumb.src} alt="" fill sizes="6rem" className="object-cover" />
+                  </span>
+                  {thumb.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : product.image.fullBleed ? (
           // Solid box photo: the photo is the frame, shown whole at its own shape (nothing cropped).
           <Tilt max={8} className="mx-auto w-full max-w-md">
             <div ref={imageRef} className="overflow-hidden rounded-card bg-tb-ivory shadow-card">
