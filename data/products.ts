@@ -90,7 +90,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 1,
     flavours: ["sweet", "savoury"],
-    image: { src: "/products/ayam-masak-kicap-pack-steel.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) box, 180g, with a bowl of chicken in dark soy gravy", fullBleed: true },
+    image: { src: "/products/ayam-masak-kicap-pack-white.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) box, 180g, with a bowl of chicken in dark soy gravy", fullBleed: true },
     accent: "#7A3E1D",
     featured: true,
     priceSGD: 7.90, // SGD — Tok Bah range price
@@ -116,7 +116,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/rendang-daging-pack-steel.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) box, 180g, with a bowl of beef rendang", fullBleed: true },
+    image: { src: "/products/rendang-daging-pack-white.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) box, 180g, with a bowl of beef rendang", fullBleed: true },
     accent: "#5A2414",
     featured: true,
     priceSGD: 7.90, // SGD — Tok Bah range price
@@ -142,7 +142,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 3,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-sambal-tumis-pack-steel.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) box, 250g, with a bowl of red sambal", fullBleed: true },
+    image: { src: "/products/pes-sambal-tumis-pack-white.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) box, 250g, with a bowl of red sambal", fullBleed: true },
     accent: "#A8261B",
     featured: true,
     priceSGD: 7.90, // SGD — Tok Bah range price
@@ -168,7 +168,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-rendang-pack-steel.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) box, 250g, with a bowl of rendang paste", fullBleed: true },
+    image: { src: "/products/pes-rendang-pack-white.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) box, 250g, with a bowl of rendang paste", fullBleed: true },
     accent: "#6B2E16",
     priceSGD: 7.90, // SGD — Tok Bah range price
     netWeight: "250g", // Sample weight — confirm against the final label
@@ -193,7 +193,7 @@ export const products: Product[] = [
     ],
     spiceLevel: 0,
     flavours: ["savoury"],
-    image: { src: "/products/nasi-putih-basmathi-label-steel.webp", alt: "Tok Bah Nasi Putih Basmathi (Basmathi Rice) pack front with a bowl of white basmathi rice" },
+    image: { src: "/products/nasi-putih-basmathi-label-white.webp", alt: "Tok Bah Nasi Putih Basmathi (Basmathi Rice) pack front with a bowl of white basmathi rice" },
     accent: "#A8966C",
     priceSGD: 3.90, // SGD
     netWeight: "200g", // Sample weight — confirm against the final label
