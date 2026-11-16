@@ -24,6 +24,10 @@ export const siteConfig = {
   whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6580114353").replace(/\D/g, ""),
   email: "hello@rjsfoods.sg", // TODO: real enquiries inbox
   instagram: "https://www.instagram.com/", // TODO: real Instagram profile URL
+  // Optional social profiles: the footer shows an icon only for the ones filled in.
+  facebook: "" as string, // TODO: Facebook page URL, if any
+  x: "" as string, // TODO: X (Twitter) profile URL, if any
+  linkedin: "" as string, // TODO: LinkedIn page URL, if any
   address: "Singapore", // TODO: business address for stockist/wholesale enquiries
 
   /**

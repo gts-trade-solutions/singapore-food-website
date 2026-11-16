@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const ogSize = { width: 1200, height: 630 };
 
 /**
- * Shared Open Graph card: split teal / chilli-red panels with the page title.
+ * Shared Open Graph card: split brown / chilli-red panels with the page title.
  * Rendered at build time by next/og (no external fonts needed).
  */
 export function renderOgImage({
@@ -17,9 +17,9 @@ export function renderOgImage({
   subtitle?: string;
   tone?: "split" | "tokbah" | "makchic";
 }) {
-  const left = tone === "makchic" ? "#D9372A" : "#0F3D3E";
-  const right = tone === "tokbah" ? "#1F4D36" : "#D9372A";
-  const accent = tone === "makchic" ? "#F5B325" : "#B8893B";
+  const left = tone === "makchic" ? "#D9372A" : "#4E423C";
+  const right = tone === "tokbah" ? "#6B5A4F" : "#D9372A";
+  const accent = tone === "makchic" ? "#F5B325" : "#A8966C";
 
   return new ImageResponse(
     (

@@ -13,7 +13,7 @@ export function CrossBrandCta({ to }: { to: BrandSlug }) {
     <section
       data-brand={brand.key}
       aria-labelledby={`cta-${to}`}
-      className={cn("relative overflow-hidden section-y", isSnack ? "bg-mc-red text-white" : "bg-tb-teal text-tb-ivory")}
+      className={cn("relative overflow-hidden section-y", isSnack ? "bg-mc-red text-white" : "bg-tb-brown text-tb-ivory")}
     >
       <div aria-hidden="true" className={cn("absolute inset-0 opacity-40", isSnack ? "bg-halftone" : "bg-batik-dots")} />
       <div className="container-page relative flex flex-col items-center text-center">

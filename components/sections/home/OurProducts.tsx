@@ -16,6 +16,7 @@ import { Tilt } from "@/components/motion/Tilt";
 import { TransitionLink } from "@/components/motion/PageTransition";
 import { ButtonLink, ArrowIcon } from "@/components/ui/Button";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { GridFiller, fillerSpan, gridClasses, useGridColumns } from "@/components/sections/ProductGrid";
 
 const ROWS: { brand: BrandSlug; line: string }[] = [
   { brand: "tok-bah", line: "Authentic flavours, ready for your table" },
@@ -31,7 +32,7 @@ function BrandMark({ brand }: { brand: BrandSlug }) {
         <span aria-hidden="true" className="absolute inset-0 border border-tb-gold/60" />
         <span aria-hidden="true" className={`${corner} -top-1 -left-1 border-t-2 border-l-2`} />
         <span aria-hidden="true" className={`${corner} -right-1 -bottom-1 border-r-2 border-b-2`} />
-        <span className="font-serif text-2xl leading-none font-semibold tracking-[0.12em] text-tb-teal uppercase md:text-3xl">Tok Bah</span>
+        <span className="font-serif text-2xl leading-none font-semibold tracking-[0.12em] text-tb-brown uppercase md:text-3xl">Tok Bah</span>
         <span className="mt-1 text-[0.6rem] font-semibold tracking-[0.3em] text-tb-gold-ink uppercase">Citarasa Nusantara</span>
       </span>
     );
@@ -115,6 +116,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
   const isSnack = product.brand === "mak-chic";
   const inStock = isInStock(product);
   const soon = isComingSoon(product);
+  const fullBleed = product.image.fullBleed === true;
   const imageRef = useRef<HTMLDivElement>(null);
   const setCursor = useUI((s) => s.setCursorLabel);
 
@@ -133,29 +135,40 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
             isSnack && "border-[3px] border-mc-cocoa",
           )}
         >
-          {/* Fixed 4:5 frame so every card is the same height; image is contained, never cropped. */}
+          {/* Fixed 3:4 frame (the box-photo shape) so every card is the same height. Box photos fill it;
+              cut-outs float inside it, whole and uncropped. */}
           <div
             className={cn(
-              "relative aspect-[4/5] overflow-hidden",
-              isSnack ? "bg-halftone bg-mc-cream" : "bg-batik-dots bg-tb-ivory",
+              "relative aspect-[3/4] overflow-hidden",
+              fullBleed ? "bg-surface" : isSnack ? "bg-halftone bg-mc-cream" : "bg-batik-dots bg-tb-ivory",
             )}
           >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-[18%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl"
-              style={{ backgroundColor: soon ? "var(--color-muted)" : product.accent }}
-            />
+            {!fullBleed && (
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-[18%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl"
+                style={{ backgroundColor: soon ? "var(--color-muted)" : product.accent }}
+              />
+            )}
             <div
               ref={imageRef}
               // pointer-events-none: the lifted (3D) image would otherwise swallow clicks meant for the card link.
-              className="pointer-events-none absolute inset-[6%] transition-transform duration-700 ease-brand group-hover:-translate-y-2 group-hover:scale-[1.04] [transform:translateZ(30px)]"
+              className={cn(
+                "pointer-events-none absolute transition-transform duration-700 ease-brand",
+                fullBleed
+                  ? "inset-0 group-hover:scale-[1.04]"
+                  : "inset-[6%] group-hover:-translate-y-2 group-hover:scale-[1.04] [transform:translateZ(30px)]",
+              )}
             >
               <ProductImage
                 src={product.image.src}
                 alt={product.image.alt}
                 fill
                 sizes="(min-width: 1536px) 15vw, (min-width: 1024px) 18vw, (min-width: 768px) 30vw, 46vw"
-                className={cn("object-contain object-center drop-shadow-[0_14px_18px_rgb(0_0_0/0.16)]", soon && "opacity-70 grayscale")}
+                className={cn(
+                  fullBleed ? "object-cover" : "object-contain object-center drop-shadow-[0_14px_18px_rgb(0_0_0/0.16)]",
+                  soon && "opacity-70 grayscale",
+                )}
               />
             </div>
           </div>
@@ -216,6 +229,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
  * 2 columns on mobile, 3 on tablet, 5 on desktop. No carousel, nothing hidden.
  */
 export function OurProducts() {
+  const cols = useGridColumns("row");
   return (
     <section aria-labelledby="products-title" className="section-y relative z-10 bg-ivory">
       <div className="container-page">
@@ -247,7 +261,7 @@ export function OurProducts() {
                 aria-labelledby={`row-${brand}`}
                 className={cn(
                   "rounded-card p-4 md:p-6",
-                  isSnack ? "bg-halftone bg-mc-cheese/25" : "bg-batik-dots bg-tb-aqua/60",
+                  isSnack ? "bg-halftone bg-mc-cheese/25" : "bg-batik-dots bg-tb-mist/60",
                 )}
               >
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3 md:mb-5">
@@ -275,19 +289,30 @@ export function OurProducts() {
                     href={brands[brand].href}
                     className={cn(
                       "inline-flex min-h-11 items-center text-sm font-semibold underline-offset-4 hover:underline",
-                      isSnack ? "font-pop text-mc-red-ink" : "text-tb-teal",
+                      isSnack ? "font-pop text-mc-red-ink" : "text-tb-brown",
                     )}
                   >
                     Explore {brands[brand].shortName} →
                   </TransitionLink>
                 </div>
 
-                <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5 lg:gap-5">
+                <ul className={gridClasses.row}>
                   {items.map((product, i) => (
                     <Reveal as="li" key={product.slug} delay={(i % 5) * 0.06}>
                       <ShopCard product={product} index={i} />
                     </Reveal>
                   ))}
+                  {/* Five products leave a gap on phones (2 columns) and tablets (3): close the row. */}
+                  <GridFiller
+                    span={fillerSpan(items.length, cols)}
+                    {...(brandSoon
+                      ? {
+                          title: "Hungry now?",
+                          body: "Our keropok is on its way. Tok Bah meals, pastes and rice are ready to order today.",
+                          showcase: getProductsByBrand("tok-bah"),
+                        }
+                      : { showcase: getProductsByBrand("mak-chic") })}
+                  />
                 </ul>
               </section>
             );

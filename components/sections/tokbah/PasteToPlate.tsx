@@ -31,8 +31,8 @@ function Wok() {
 function Plate() {
   return (
     <svg viewBox="0 0 320 180" className="h-full w-full" aria-hidden="true">
-      <ellipse cx="160" cy="110" rx="156" ry="62" fill="#FAF7F0" stroke="#B8893B" strokeWidth="3" />
-      <ellipse cx="160" cy="106" rx="118" ry="44" fill="#E3F1F1" />
+      <ellipse cx="160" cy="110" rx="156" ry="62" fill="#FAF7F0" stroke="#A8966C" strokeWidth="3" />
+      <ellipse cx="160" cy="106" rx="118" ry="44" fill="#E6EBEF" />
       {/* rice mound */}
       <path d="M70 108 C76 70 150 66 156 108 Z" fill="#fffdf6" stroke="#efe7d4" strokeWidth="2" />
       {/* rendang */}
@@ -125,14 +125,14 @@ export function PasteToPlate() {
       id="paste-to-plate"
       ref={sectionRef}
       aria-labelledby="ptp-title"
-      className={cn("relative overflow-hidden bg-tb-aqua", enhanced ? "h-[100svh] pt-[var(--header-h)]" : "section-y")}
+      className={cn("relative overflow-hidden bg-tb-mist", enhanced ? "h-[100svh] pt-[var(--header-h)]" : "section-y")}
     >
       <div aria-hidden="true" className="bg-batik-dots absolute inset-0 opacity-50" />
       <div className={cn("container-page relative grid", enhanced ? "h-full grid-cols-2 items-center gap-12" : "gap-8 md:gap-10")}>
         {/* Copy */}
         <div>
           <p className="eyebrow mb-4">From paste to plate</p>
-          <h2 id="ptp-title" className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-teal">
+          <h2 id="ptp-title" className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-brown">
             Rendang, the easy way
           </h2>
           <DrawLine className="mt-6 !max-w-[14rem]" />
@@ -146,7 +146,7 @@ export function PasteToPlate() {
               >
                 <div>
                   <p className="font-serif text-lg text-tb-gold-ink italic md:text-xl">Step {i + 1}</p>
-                  <h3 className={cn("mt-1 text-tb-teal", enhanced ? "text-4xl" : "text-2xl md:text-3xl")}>{step.title}</h3>
+                  <h3 className={cn("mt-1 text-tb-brown", enhanced ? "text-4xl" : "text-2xl md:text-3xl")}>{step.title}</h3>
                   <p className={cn("mt-2 max-w-md leading-relaxed text-muted", enhanced ? "text-lg" : "text-sm md:text-base")}>{step.body}</p>
                 </div>
                 {!enhanced && (
@@ -160,7 +160,7 @@ export function PasteToPlate() {
                     )}
                     {i === 2 && (
                       <div className="absolute inset-x-0 bottom-0 h-20">
-                        <Steam className="absolute -top-14 left-1/2 w-20 -translate-x-1/2 text-tb-teal/40" />
+                        <Steam className="absolute -top-14 left-1/2 w-20 -translate-x-1/2 text-tb-brown/40" />
                         <Wok />
                         <span className="absolute top-2 left-1/2 h-7 w-28 -translate-x-1/2 rounded-full bg-[#5A2414]" />
                       </div>
@@ -187,7 +187,7 @@ export function PasteToPlate() {
             <div className="absolute inset-[10%] rounded-full bg-tb-ivory" />
 
             <div data-wok-group className="absolute inset-x-[14%] bottom-[18%] h-[30%]">
-              <div data-wok-steam className="absolute -top-[70%] left-1/2 w-[40%] -translate-x-1/2 text-tb-teal/40">
+              <div data-wok-steam className="absolute -top-[70%] left-1/2 w-[40%] -translate-x-1/2 text-tb-brown/40">
                 <Steam />
               </div>
               <div data-wok className="absolute inset-0">
@@ -214,7 +214,7 @@ export function PasteToPlate() {
             </div>
 
             <div data-plate className="absolute inset-x-[10%] top-[30%] h-[44%]">
-              <div data-plate-steam className="absolute -top-[30%] left-1/2 w-[30%] -translate-x-1/2 text-tb-teal/40">
+              <div data-plate-steam className="absolute -top-[30%] left-1/2 w-[30%] -translate-x-1/2 text-tb-brown/40">
                 <Steam />
               </div>
               <Plate />

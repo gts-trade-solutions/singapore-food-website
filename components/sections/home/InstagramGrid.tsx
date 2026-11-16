@@ -36,10 +36,11 @@ export function InstagramGrid() {
                   aria-label={`${post.caption} (opens Instagram)`}
                 >
                   <ImageReveal direction={i % 2 ? "left" : "up"} delay={i * 0.06} className="rounded-2xl">
+                    {/* 3:4 tiles: box photos fill them edge to edge, round labels float on the halftone. */}
                     <div
                       className={cn(
-                        "relative aspect-square",
-                        isSnack ? "bg-halftone bg-mc-cheese" : "bg-batik-dots bg-tb-aqua",
+                        "relative aspect-[3/4] overflow-hidden",
+                        product.image.fullBleed ? "bg-tb-mist" : isSnack ? "bg-halftone bg-mc-cheese" : "bg-batik-dots bg-tb-mist",
                       )}
                     >
                       <ProductImage
@@ -47,7 +48,12 @@ export function InstagramGrid() {
                         alt=""
                         fill
                         sizes="(min-width: 1024px) 16vw, (min-width: 768px) 33vw, 50vw"
-                        className="object-contain p-3 transition-transform duration-700 ease-brand group-hover:scale-110 group-hover:rotate-3"
+                        className={cn(
+                          "transition-transform duration-700 ease-brand",
+                          product.image.fullBleed
+                            ? "object-cover group-hover:scale-105"
+                            : "object-contain p-3 group-hover:scale-110 group-hover:rotate-3",
+                        )}
                       />
                     </div>
                   </ImageReveal>

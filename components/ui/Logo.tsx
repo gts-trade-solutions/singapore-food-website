@@ -41,10 +41,10 @@ export function LogoFoods({ fill }: { fill: string }) {
 type Variant = "color" | "light" | "current";
 
 const TONES: Record<Variant, { underline: string; foods: string }> = {
-  // Brand split: teal → chilli red letters, antique gold accents (light backgrounds).
-  color: { underline: "#B8893B", foods: "#8A6424" },
-  // Ivory letters with gold accents (dark teal / charcoal / red backgrounds).
-  light: { underline: "#B8893B", foods: "#D9B06A" },
+  // Brand split: brown → chilli red letters, antique gold accents (light backgrounds).
+  color: { underline: "#A8966C", foods: "#74643F" },
+  // Ivory letters with gold accents (dark brown / red backgrounds).
+  light: { underline: "#A8966C", foods: "#D6C9A2" },
   // Follows the surrounding text colour.
   current: { underline: "currentColor", foods: "currentColor" },
 };
@@ -78,7 +78,7 @@ export function LogoMark({
       {variant === "color" && (
         <defs>
           <linearGradient id={gradientId} x1="160" y1="0" x2="660" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0.3" stopColor="#0F3D3E" />
+            <stop offset="0.3" stopColor="#4E423C" />
             <stop offset="0.75" stopColor="#D9372A" />
           </linearGradient>
         </defs>

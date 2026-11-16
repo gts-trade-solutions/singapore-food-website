@@ -41,6 +41,7 @@ export function ProductCard({
   const setCursor = useUI((s) => s.setCursorLabel);
   const isSnack = product.brand === "mak-chic";
   const soon = isComingSoon(product);
+  const fullBleed = product.image.fullBleed === true;
   const angle = tilted ? (index % 2 === 0 ? -1.5 : 1.5) : 0;
 
   return (
@@ -59,21 +60,32 @@ export function ProductCard({
           )}
         >
           <div
-            className={cn("relative aspect-[4/5] overflow-hidden", isSnack ? "bg-halftone" : "bg-batik-dots")}
+            className={cn(
+              "relative aspect-[3/4] overflow-hidden",
+              fullBleed ? "bg-surface" : isSnack ? "bg-halftone" : "bg-batik-dots",
+            )}
           >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-[15%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl transition-transform duration-700 ease-brand group-hover:scale-75"
-              style={{ backgroundColor: soon ? "var(--color-muted)" : product.accent }}
-            />
-            {/* Whole image always visible: pack shots sit inside the 4:5 frame, round labels centred in it. */}
+            {!fullBleed && (
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-[15%] bottom-[6%] h-[10%] rounded-[50%] opacity-30 blur-xl transition-transform duration-700 ease-brand group-hover:scale-75"
+                style={{ backgroundColor: soon ? "var(--color-muted)" : product.accent }}
+              />
+            )}
+            {/* 3:4 frame (the box-photo shape): box photos fill it edge to edge; cut-outs (round labels,
+                the rice pack) sit whole inside it. */}
             <div
               ref={imageRef}
               // pointer-events-none: the image is lifted in 3D for the tilt, so it would sit above
               // the card link and swallow clicks. Clicks pass through to the link instead.
               className={cn(
-                "pointer-events-none absolute transition-transform duration-700 ease-brand group-hover:-translate-y-2 group-hover:scale-[1.05] [transform:translateZ(40px)]",
-                isSnack ? "inset-[7%]" : "inset-[6%]",
+                "pointer-events-none absolute transition-transform duration-700 ease-brand",
+                fullBleed
+                  ? "inset-0 group-hover:scale-[1.04]"
+                  : cn(
+                      "group-hover:-translate-y-2 group-hover:scale-[1.05] [transform:translateZ(40px)]",
+                      isSnack ? "inset-[7%]" : "inset-[6%]",
+                    ),
               )}
             >
               <ProductImage
@@ -83,19 +95,22 @@ export function ProductCard({
                 priority={priority}
                 sizes={sizes}
                 className={cn(
-                  "object-contain object-center drop-shadow-[0_16px_20px_rgb(0_0_0/0.16)]",
+                  fullBleed ? "object-cover" : "object-contain object-center drop-shadow-[0_16px_20px_rgb(0_0_0/0.16)]",
                   soon && "opacity-70 grayscale",
                 )}
               />
             </div>
-            <span
-              className={cn(
-                "pointer-events-none absolute top-2.5 left-2.5 rounded-full px-2.5 py-1 text-[0.62rem] font-semibold tracking-[0.12em] uppercase sm:top-3 sm:left-3 sm:text-[0.7rem]",
-                isSnack ? "bg-mc-cheese text-mc-cocoa" : "bg-bg/90 text-accent-ink",
-              )}
-            >
-              {brand.shortName}
-            </span>
+            {/* Box photos already carry the brand name, so the tag would only cover the pack. */}
+            {!fullBleed && (
+              <span
+                className={cn(
+                  "pointer-events-none absolute top-2.5 left-2.5 rounded-full px-2.5 py-1 text-[0.62rem] font-semibold tracking-[0.12em] uppercase sm:top-3 sm:left-3 sm:text-[0.7rem]",
+                  isSnack ? "bg-mc-cheese text-mc-cocoa" : "bg-bg/90 text-accent-ink",
+                )}
+              >
+                {brand.shortName}
+              </span>
+            )}
             {soon || !isInStock(product) ? (
               <span className="pointer-events-none absolute right-2.5 bottom-2.5 rounded-full bg-charcoal px-2.5 py-1 text-[0.62rem] font-semibold tracking-[0.12em] text-ivory uppercase shadow-card sm:right-3 sm:bottom-3 sm:text-[0.7rem]">
                 {soon ? "Coming soon" : "Out of stock"}

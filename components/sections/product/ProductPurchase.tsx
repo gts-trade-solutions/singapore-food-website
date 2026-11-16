@@ -28,39 +28,56 @@ export function ProductPurchase({ product }: { product: Product }) {
   return (
     <div className="grid gap-8 md:gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
       <div className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:self-start">
-        <Tilt max={isSnack ? 14 : 8} className="mx-auto w-full max-w-xl">
-          <div
-            className={cn(
-              "relative aspect-square overflow-hidden rounded-card",
-              isSnack ? "bg-halftone border-[3px] border-mc-cocoa bg-mc-cheese shadow-card" : "bg-batik-dots bg-tb-aqua",
-            )}
-          >
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-[20%] bottom-[10%] h-[12%] rounded-[50%] opacity-40 blur-2xl"
-              style={{ backgroundColor: product.accent }}
-            />
-            {!isSnack && product.type !== "paste" && <Steam className="absolute top-[4%] left-1/2 w-24 -translate-x-1/2 text-tb-teal/40" />}
-            <div ref={imageRef} className="absolute inset-[10%] [transform:translateZ(60px)]">
+        {product.image.fullBleed ? (
+          // Solid box photo: the photo is the frame, shown whole at its own shape (nothing cropped).
+          <Tilt max={8} className="mx-auto w-full max-w-md">
+            <div ref={imageRef} className="overflow-hidden rounded-card bg-tb-ivory shadow-card">
               <ProductImage
                 src={product.image.src}
                 alt={product.image.alt}
-                fill
+                width={880}
+                height={1180}
                 priority
-                sizes="(min-width: 1024px) 45vw, 90vw"
-                className={cn("object-contain drop-shadow-[0_30px_30px_rgb(0_0_0/0.25)]", soon && "opacity-70 grayscale")}
+                sizes="(min-width: 1024px) 28rem, 90vw"
+                className={cn("block h-auto w-full", soon && "opacity-70 grayscale")}
               />
             </div>
-            {isSnack && <StickerBadge className="absolute top-4 right-4 w-24 text-xs md:w-28" center={"RANGUP\nSEDAP"} />}
-          </div>
-        </Tilt>
+          </Tilt>
+        ) : (
+          <Tilt max={isSnack ? 14 : 8} className="mx-auto w-full max-w-xl">
+            <div
+              className={cn(
+                "relative aspect-square overflow-hidden rounded-card",
+                isSnack ? "bg-halftone border-[3px] border-mc-cocoa bg-mc-cheese shadow-card" : "bg-batik-dots bg-tb-mist",
+              )}
+            >
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-[20%] bottom-[10%] h-[12%] rounded-[50%] opacity-40 blur-2xl"
+                style={{ backgroundColor: product.accent }}
+              />
+              {!isSnack && product.type !== "paste" && <Steam className="absolute top-[4%] left-1/2 w-24 -translate-x-1/2 text-tb-brown/40" />}
+              <div ref={imageRef} className="absolute inset-[10%] [transform:translateZ(60px)]">
+                <ProductImage
+                  src={product.image.src}
+                  alt={product.image.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 45vw, 90vw"
+                  className={cn("object-contain drop-shadow-[0_30px_30px_rgb(0_0_0/0.25)]", soon && "opacity-70 grayscale")}
+                />
+              </div>
+              {isSnack && <StickerBadge className="absolute top-4 right-4 w-24 text-xs md:w-28" center={"RANGUP\nSEDAP"} />}
+            </div>
+          </Tilt>
+        )}
       </div>
 
       <div>
         <p className={cn("mb-3", isSnack ? "font-pop text-xs font-extrabold tracking-[0.2em] text-mc-red-ink uppercase" : "eyebrow")}>
           {brand.name}
         </p>
-        <h1 className={cn("leading-[0.95]", isSnack ? "text-[clamp(2.75rem,5vw,4.5rem)] text-mc-cocoa" : "text-[clamp(2.75rem,5vw,5rem)] text-tb-teal")}>
+        <h1 className={cn("leading-[0.95]", isSnack ? "text-[clamp(2.75rem,5vw,4.5rem)] text-mc-cocoa" : "text-[clamp(2.75rem,5vw,5rem)] text-tb-brown")}>
           {product.name}
         </h1>
         <p className="mt-2 text-lg text-muted md:text-xl">{product.nameEn}</p>
@@ -118,7 +135,7 @@ export function ProductPurchase({ product }: { product: Product }) {
             { k: t.product.netWeight, v: product.netWeight ?? "TBC" },
             { k: "Ordering", v: soon ? "Coming soon" : "Confirmed on WhatsApp" },
           ].map((f) => (
-            <div key={f.k} className={cn("rounded-xl p-3 md:p-4", isSnack ? "border-2 border-mc-cocoa/20 bg-white/60" : "bg-tb-aqua/60")}>
+            <div key={f.k} className={cn("rounded-xl p-3 md:p-4", isSnack ? "border-2 border-mc-cocoa/20 bg-white/60" : "bg-tb-mist/60")}>
               <dt className="text-xs tracking-[0.12em] text-muted uppercase">{f.k}</dt>
               <dd className="mt-1 font-semibold">{f.v}</dd>
             </div>

@@ -50,7 +50,7 @@ const PANELS = [
 
 const CHIP_TONE: Record<(typeof PANELS)[number]["key"], string> = {
   kitchen: "border-charcoal/15 bg-ivory text-charcoal",
-  tokbah: "border-tb-gold/50 bg-tb-ivory text-tb-teal",
+  tokbah: "border-tb-gold/50 bg-tb-ivory text-tb-brown",
   makchic: "border-mc-cocoa bg-mc-cheese font-pop text-mc-cocoa",
   together: "border-charcoal/15 bg-ivory text-charcoal",
 };
@@ -69,7 +69,7 @@ function PanelExtras({ panel }: { panel: (typeof PANELS)[number] }) {
         href={panel.link.href}
         className={cn(
           "mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline",
-          panel.key === "makchic" ? "font-pop text-mc-red-ink" : "text-tb-teal",
+          panel.key === "makchic" ? "font-pop text-mc-red-ink" : "text-tb-brown",
         )}
       >
         {panel.link.label} →
@@ -155,7 +155,7 @@ export function StoryPinned() {
   // Each visual fills its square frame: a full-size backdrop disc with three packs across it.
   const visuals = [
     <div key="kitchen" className="relative grid h-full w-full place-items-center">
-      <div className="relative aspect-square w-[94%] rounded-full bg-gradient-to-r from-tb-teal from-50% to-mc-red to-50% shadow-lift">
+      <div className="relative aspect-square w-[94%] rounded-full bg-gradient-to-r from-tb-brown from-50% to-mc-red to-50% shadow-lift">
         <BatikFlower className="absolute inset-[10%] text-tb-gold opacity-40" />
       </div>
       <div className="absolute inset-x-[6%] flex items-center justify-between">
@@ -166,7 +166,7 @@ export function StoryPinned() {
     <div key="tokbah" className="relative grid h-full w-full place-items-center">
       <div className="absolute aspect-square w-[98%] rounded-full border border-tb-gold/60" />
       <div className="bg-batik-dots absolute aspect-square w-[90%] rounded-full bg-tb-ivory shadow-card" />
-      <Steam className="absolute top-[6%] w-[18%] text-tb-teal/40" />
+      <Steam className="absolute top-[6%] w-[18%] text-tb-brown/40" />
       <div className="relative flex w-[96%] items-end justify-center gap-[1%] pt-[8%]">
         {pack(kicap, "w-[33%] -rotate-6 translate-y-[4%]")}
         {pack(rendang, "z-10 w-[40%]")}
@@ -192,7 +192,7 @@ export function StoryPinned() {
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col-reverse rounded-card border border-line bg-bg/90 p-2 sm:p-3 lg:p-5">
             <dt className="mt-1 text-[0.65rem] leading-tight text-muted sm:text-xs">{s.label}</dt>
-            <dd className="font-serif text-4xl text-tb-teal lg:text-6xl">
+            <dd className="font-serif text-4xl text-tb-brown lg:text-6xl">
               <Counter value={s.value} suffix={s.suffix} />
             </dd>
           </div>
@@ -203,9 +203,9 @@ export function StoryPinned() {
 
   const cardTone: Record<(typeof PANELS)[number]["key"], string> = {
     kitchen: "bg-ivory",
-    tokbah: "bg-tb-aqua",
+    tokbah: "bg-tb-mist",
     makchic: "bg-mc-cream",
-    together: "bg-gradient-to-br from-tb-aqua to-mc-cream",
+    together: "bg-gradient-to-br from-tb-mist to-mc-cream",
   };
 
   if (!enhanced) {
@@ -248,9 +248,9 @@ export function StoryPinned() {
     <section ref={sectionRef} aria-labelledby="story-title" className="relative z-10 h-[100svh] overflow-hidden bg-[#F2EDE3]">
       {/* Colour wash layers crossfade between chapters (opacity only). */}
       <div aria-hidden="true" className="absolute inset-0">
-        <div data-layer className="absolute inset-0 bg-tb-aqua opacity-0" />
+        <div data-layer className="absolute inset-0 bg-tb-mist opacity-0" />
         <div data-layer className="absolute inset-0 bg-mc-cream opacity-0" />
-        <div data-layer className="absolute inset-0 bg-gradient-to-r from-tb-aqua to-mc-cream opacity-0" />
+        <div data-layer className="absolute inset-0 bg-gradient-to-r from-tb-mist to-mc-cream opacity-0" />
       </div>
 
       <div className="container-page relative grid h-full grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] items-center gap-10 pt-[calc(var(--header-h)+1rem)] pb-8 xl:gap-16">
@@ -300,7 +300,7 @@ export function StoryPinned() {
       </div>
 
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1 bg-line">
-        <div data-progress className="h-full origin-left scale-x-0 bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />
+        <div data-progress className="h-full origin-left scale-x-0 bg-gradient-to-r from-tb-brown via-tb-gold to-mc-red" />
       </div>
     </section>
   );

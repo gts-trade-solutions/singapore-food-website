@@ -14,7 +14,7 @@ export default function NotFound() {
         <div className="relative mx-auto mb-8 w-40">
           <Steam className="absolute -top-16 left-1/2 w-20 -translate-x-1/2 text-tb-gold" />
           <svg viewBox="0 0 120 60" className="w-full" aria-hidden="true">
-            <path d="M6 10 H114 A54 50 0 0 1 6 10Z" fill="var(--tb-teal)" />
+            <path d="M6 10 H114 A54 50 0 0 1 6 10Z" fill="var(--tb-brown)" />
             <path d="M2 10 H118" stroke="var(--tb-gold)" strokeWidth="4" strokeLinecap="round" />
           </svg>
         </div>

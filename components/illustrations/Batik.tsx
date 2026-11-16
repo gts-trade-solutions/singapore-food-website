@@ -51,7 +51,7 @@ function Bloom({ cx, cy, progress, at }: { cx: number; cy: number; progress: Mot
           fillOpacity="0.55"
         />
       ))}
-      <circle cx={cx} cy={cy} r="2.4" fill="var(--tb-teal)" />
+      <circle cx={cx} cy={cy} r="2.4" fill="var(--tb-brown)" />
     </motion.g>
   );
 }
@@ -67,9 +67,9 @@ export function BatikVine({
   const style = progress ? { pathLength: progress } : undefined;
   return (
     <svg viewBox="0 0 80 1020" fill="none" className={className} aria-hidden="true" preserveAspectRatio="xMidYMin slice">
-      <motion.path d={STEM} stroke="var(--tb-teal)" strokeOpacity="0.5" strokeWidth="1.4" style={style} />
+      <motion.path d={STEM} stroke="var(--tb-brown)" strokeOpacity="0.5" strokeWidth="1.4" style={style} />
       {LEAVES.map((d) => (
-        <motion.path key={d} d={d} stroke="var(--tb-teal)" strokeOpacity="0.45" strokeWidth="1.1" style={style} />
+        <motion.path key={d} d={d} stroke="var(--tb-brown)" strokeOpacity="0.45" strokeWidth="1.1" style={style} />
       ))}
       {CURLS.map((d) => (
         <motion.path key={d} d={d} stroke="var(--tb-gold)" strokeWidth="1.1" style={style} />

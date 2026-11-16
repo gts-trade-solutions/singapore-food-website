@@ -14,14 +14,16 @@
   --color-accent-ink: var(--brand-accent-ink);
   --color-highlight: var(--brand-highlight);
 
-  --color-tb-teal: var(--tb-teal);
-  --color-tb-forest: var(--tb-forest);
+  --color-tb-brown: var(--tb-brown);
+  --color-tb-umber: var(--tb-umber);
+  --color-tb-steel: var(--tb-steel);
+  --color-tb-steel-ink: var(--tb-steel-ink);
   --color-tb-gold: var(--tb-gold);
   --color-tb-gold-ink: var(--tb-gold-ink);
   --color-tb-gold-light: var(--tb-gold-light);
   --color-tb-ink-deep: var(--tb-ink-deep);
   --color-tb-ivory: var(--tb-ivory);
-  --color-tb-aqua: var(--tb-aqua);
+  --color-tb-mist: var(--tb-mist);
   --color-mc-red: var(--mc-red);
   --color-mc-red-ink: var(--mc-red-ink);
   --color-mc-cream: var(--mc-cream);
@@ -158,7 +160,7 @@
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--brand-accent-ink);
+    color: var(--brand-eyebrow);
   }
 
   .sr-only-focusable:not(:focus):not(:focus-within) {
@@ -172,7 +174,7 @@
 
   /* Batik-inspired dotted background used on Tok Bah surfaces */
   .bg-batik-dots {
-    background-image: radial-gradient(rgb(184 137 59 / 0.18) 1px, transparent 1.2px);
+    background-image: radial-gradient(rgb(168 150 108 / 0.3) 1px, transparent 1.2px);
     background-size: 22px 22px;
   }
 

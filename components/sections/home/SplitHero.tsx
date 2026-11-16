@@ -123,7 +123,7 @@ export function SplitHero() {
           >
             <div aria-hidden="true" className="bg-halftone absolute inset-0 opacity-40" />
             <motion.div
-              className="relative px-4 pt-[calc(var(--header-h)+1.5rem)] pb-16 sm:px-6 md:ml-auto md:flex md:h-full md:w-1/2 md:flex-col md:justify-center md:px-10 md:pt-[var(--header-h)] md:pb-8 lg:px-16"
+              className="relative px-4 pt-[calc(var(--header-h)+1.5rem)] pb-16 sm:px-6 md:ml-auto md:flex md:h-full md:w-1/2 md:flex-col md:justify-center-safe md:px-10 md:pt-[calc(var(--header-h)+1rem)] md:pb-8 lg:px-16"
               animate={isDesktop ? { x: active === "left" ? "18%" : "0%", opacity: active === "left" ? 0.35 : 1 } : undefined}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -182,23 +182,20 @@ export function SplitHero() {
           {/* Clip-path is driven by a CSS variable so the server render is already split 50/50. */}
           <div
             data-brand="tokbah"
-            className="relative order-1 w-full shrink-0 snap-start bg-tb-teal text-tb-ivory md:absolute md:inset-0 md:z-10 md:[clip-path:inset(0_calc(100%-var(--split))_0_0)] md:transition-[clip-path] md:duration-1000 md:ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none"
+            className="relative order-1 w-full shrink-0 snap-start bg-tb-brown text-tb-ivory md:absolute md:inset-0 md:z-10 md:[clip-path:inset(0_calc(100%-var(--split))_0_0)] md:transition-[clip-path] md:duration-1000 md:ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none"
             style={{ "--split": `${split}%` } as CSSProperties}
             onPointerEnter={() => hover("left")}
           >
-            <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,#1F4D36_0%,transparent_60%)] opacity-80" />
+            <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,#6B5A4F_0%,transparent_60%)] opacity-80" />
             <BatikFlower className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 text-tb-gold opacity-15" />
             <BatikFlower className="pointer-events-none absolute bottom-10 left-[36%] hidden h-40 w-40 text-tb-gold opacity-10 md:block" />
 
             <motion.div
-              className="relative px-4 pt-[calc(var(--header-h)+1.5rem)] pb-16 sm:px-6 md:flex md:h-full md:w-1/2 md:flex-col md:justify-center md:px-10 md:pt-[var(--header-h)] md:pb-8 lg:px-16"
+              className="relative px-4 pt-[calc(var(--header-h)+1.5rem)] pb-16 sm:px-6 md:flex md:h-full md:w-1/2 md:flex-col md:justify-center-safe md:px-10 md:pt-[calc(var(--header-h)+1rem)] md:pb-8 lg:px-16"
               animate={isDesktop ? { x: active === "right" ? "-18%" : "0%", opacity: active === "right" ? 0.35 : 1 } : undefined}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative z-10 max-w-md">
-                <p className="eyebrow mb-3 !text-tb-gold-light">
-                  Tok Bah<span className="hidden sm:inline md:hidden lg:inline"> · Ready-to-Eat Meals</span>
-                </p>
                 <SplitText
                   as="h2"
                   by="line"
@@ -229,7 +226,7 @@ export function SplitHero() {
                   <ProductImage src={rendang.image.src} alt="" width={300} height={380} priority sizes="(min-width: 768px) 14vw, 30vw" className="h-auto w-full drop-shadow-[0_30px_30px_rgb(0_0_0/0.35)]" />
                 </div>
               </Float>
-              <Float mx={mx} my={my} depth={0.6} rotate={5} className="right-[20%] bottom-[8%] hidden w-[9vw] max-w-[150px] md:block">
+              <Float mx={mx} my={my} depth={0.6} rotate={5} className="right-[5%] bottom-[5%] hidden w-[9vw] max-w-[150px] md:block">
                 <div className="float-y [animation-delay:-3s]">
                   <ProductImage src={kicap.image.src} alt="" width={300} height={380} sizes="9vw" className="h-auto w-full drop-shadow-[0_30px_30px_rgb(0_0_0/0.35)]" />
                 </div>
@@ -289,7 +286,7 @@ function TrustRow() {
       <ul className="container-page grid grid-cols-2 gap-x-4 gap-y-3 py-4 md:grid-cols-4 md:py-5">
         {TRUST_POINTS.map((t) => (
           <li key={t.label} className="flex items-center gap-3 text-sm font-medium text-charcoal">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-tb-aqua text-tb-teal">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-tb-mist text-tb-brown">
               <svg
                 viewBox="0 0 24 24"
                 className="h-[18px] w-[18px]"

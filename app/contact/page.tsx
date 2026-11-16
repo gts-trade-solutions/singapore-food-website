@@ -120,7 +120,7 @@ export default function ContactPage() {
               <ol className="grid gap-3 sm:grid-cols-3">
                 {NEXT_STEPS.map((step, i) => (
                   <li key={step} className="flex gap-3 text-sm text-muted sm:flex-col sm:gap-2">
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-tb-teal font-serif text-tb-ivory italic">{i + 1}</span>
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-tb-brown font-serif text-tb-ivory italic">{i + 1}</span>
                     {step}
                   </li>
                 ))}
@@ -137,7 +137,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section id="wholesale" aria-labelledby="wholesale-title" className="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-tb-teal to-tb-forest section-y text-tb-ivory">
+      <section id="wholesale" aria-labelledby="wholesale-title" className="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-tb-brown to-tb-umber section-y text-tb-ivory">
         <StickerBadge
           className="absolute -top-6 -right-6 hidden w-28 text-sm opacity-90 md:block lg:w-32"
           center={"STOCK\nUS!"}

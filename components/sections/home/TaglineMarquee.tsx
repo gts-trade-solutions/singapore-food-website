@@ -20,7 +20,7 @@ export function TaglineMarquee({ className }: { className?: string }) {
             <span
               className={cn(
                 "px-6 text-4xl whitespace-nowrap md:px-10 md:text-6xl",
-                item.brand === "tb" ? "font-serif text-tb-teal italic" : "font-script text-mc-red-ink",
+                item.brand === "tb" ? "font-serif text-tb-brown italic" : "font-script text-mc-red-ink",
               )}
             >
               {item.text}

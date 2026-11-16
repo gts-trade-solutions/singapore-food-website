@@ -61,7 +61,7 @@ export default function AboutPage() {
             <ImageReveal className="rounded-card">
               <div
                 data-brand="tokbah"
-                className="bg-batik-dots relative grid aspect-[4/3] grid-cols-[1fr_44%] bg-tb-teal p-5 text-tb-ivory sm:p-7"
+                className="bg-batik-dots relative grid aspect-[4/3] grid-cols-[1fr_44%] bg-tb-brown p-5 text-tb-ivory sm:p-7"
               >
                 <div className="relative z-10 flex flex-col">
                   <p className="eyebrow !text-tb-gold-light">Tok Bah</p>
@@ -101,7 +101,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="values-title" className="section-y bg-tb-aqua/60">
+      <section aria-labelledby="values-title" className="section-y bg-tb-mist/60">
         <div className="container-page">
           <div className="mx-auto mb-8 max-w-2xl text-center md:mb-10">
             <p className="eyebrow mb-3">What we stand for</p>
@@ -132,7 +132,7 @@ export default function AboutPage() {
               Five steps, the same for every batch. The slow parts stay slow, because that is where the flavour comes from.
             </p>
             <ImageReveal className="mt-6 rounded-card">
-              <div className="bg-batik-dots relative grid aspect-[16/9] grid-cols-3 items-end gap-2 bg-tb-aqua px-[6%] pt-[6%]">
+              <div className="bg-batik-dots relative grid aspect-[16/9] grid-cols-3 items-end gap-2 bg-tb-mist px-[6%] pt-[6%]">
                 {[sambal, rendang, tempe].map((p, i) => (
                   <ProductImage
                     key={p.slug}

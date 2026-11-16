@@ -90,7 +90,7 @@ export function Header() {
     ? ({
         "--brand-ink": "#FAF7F0",
         "--brand-primary": "#FAF7F0",
-        "--brand-primary-ink": "#1E1C1A",
+        "--brand-primary-ink": "#3A302B",
         "--brand-line": "rgb(250 247 240 / 0.4)",
         "--brand-focus": "#F5B325",
       } as CSSProperties)

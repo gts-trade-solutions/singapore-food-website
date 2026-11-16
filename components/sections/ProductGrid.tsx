@@ -10,17 +10,19 @@ import { whatsappUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { ProductImage } from "@/components/ui/ProductImage";
 
-export type GridLayout = "standard" | "wide";
+export type GridLayout = "standard" | "wide" | "row";
 
-/** 2 cols mobile, 3 tablet, 4 desktop; "wide" adds 5 cols above 1536px (shop). */
+/** 2 cols mobile, 3 tablet, 4 desktop; "wide" adds 5 cols above 1536px (shop); "row" is 5 on desktop (home, one brand per row). */
 export const gridClasses: Record<GridLayout, string> = {
   standard: "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6",
   wide: "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:grid-cols-5",
+  row: "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5 lg:gap-5",
 };
 
 export const gridSizes: Record<GridLayout, string> = {
   standard: "(min-width: 1024px) 24vw, (min-width: 768px) 32vw, 48vw",
   wide: "(min-width: 1536px) 18vw, (min-width: 1024px) 24vw, (min-width: 768px) 32vw, 48vw",
+  row: "(min-width: 1536px) 15vw, (min-width: 1024px) 18vw, (min-width: 768px) 30vw, 46vw",
 };
 
 /** Live column count matching `gridClasses` (null until mounted). */
@@ -35,7 +37,7 @@ export function useGridColumns(layout: GridLayout): number | null {
     const update = () => {
       let c = 2;
       if (qs[0].matches) c = 3;
-      if (qs[1].matches) c = 4;
+      if (qs[1].matches) c = layout === "row" ? 5 : 4;
       if (qs[2].matches && layout === "wide") c = 5;
       setCols(c);
     };

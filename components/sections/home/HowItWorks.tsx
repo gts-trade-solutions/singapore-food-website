@@ -72,7 +72,7 @@ function ShareIcon() {
           }}
           style={{ transformOrigin: `${cx}px ${cy}px` }}
         >
-          <path d={`M${cx - 11} ${cy} h22 a11 8 0 0 1 -22 0Z`} fill={i === 0 ? "var(--tb-teal)" : i === 1 ? "var(--mc-red)" : "var(--tb-gold)"} />
+          <path d={`M${cx - 11} ${cy} h22 a11 8 0 0 1 -22 0Z`} fill={i === 0 ? "var(--tb-brown)" : i === 1 ? "var(--mc-red)" : "var(--tb-gold)"} />
         </motion.g>
       ))}
       <motion.path
@@ -91,7 +91,7 @@ const ICONS = { heat: HeatIcon, serve: ServeIcon, share: ShareIcon };
 
 export function HowItWorks() {
   return (
-    <section aria-labelledby="how-title" data-brand="tokbah" className="relative z-10 overflow-hidden bg-tb-teal section-y text-tb-ivory">
+    <section aria-labelledby="how-title" data-brand="tokbah" className="relative z-10 overflow-hidden bg-tb-brown section-y text-tb-ivory">
       <div aria-hidden="true" className="bg-batik-dots absolute inset-0 opacity-40" />
       <div className="container-page relative">
         <div className="mx-auto mb-8 md:mb-10 max-w-2xl text-center">
@@ -131,9 +131,9 @@ export function HowItWorks() {
                 className="relative flex flex-col items-center text-center"
                 variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}
               >
-                <div className="relative mb-5 grid h-32 w-32 place-items-center rounded-full border border-tb-gold/40 bg-tb-teal p-6 text-tb-ivory md:h-36 md:w-36">
+                <div className="relative mb-5 grid h-32 w-32 place-items-center rounded-full border border-tb-gold/40 bg-tb-brown p-6 text-tb-ivory md:h-36 md:w-36">
                   <Icon />
-                  <span className="absolute -top-2 -right-2 grid h-10 w-10 place-items-center rounded-full bg-tb-gold font-serif text-lg text-tb-teal">
+                  <span className="absolute -top-2 -right-2 grid h-10 w-10 place-items-center rounded-full bg-tb-gold font-serif text-lg text-tb-brown">
                     {i + 1}
                   </span>
                 </div>

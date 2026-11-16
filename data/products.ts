@@ -29,7 +29,15 @@ export interface Product {
   servingSuggestions: string[];
   spiceLevel: SpiceLevel;
   flavours: Flavour[];
-  image: { src: string; alt: string };
+  image: {
+    src: string;
+    alt: string;
+    /**
+     * Solid photo (about 3:4, e.g. a box front) that fills its frame edge to edge on the product page.
+     * Leave off for cut-outs with a transparent background: those float on the brand background.
+     */
+    fullBleed?: boolean;
+  };
   /** Accent colour used for card glow, cursor and wipes. */
   accent: string;
   featured?: boolean;
@@ -82,10 +90,10 @@ export const products: Product[] = [
     ],
     spiceLevel: 1,
     flavours: ["sweet", "savoury"],
-    image: { src: "/products/ayam-masak-kicap-pack.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) box, 180g, with a bowl of chicken in dark soy gravy" },
+    image: { src: "/products/ayam-masak-kicap-pack.webp", alt: "Tok Bah Ayam Masak Kicap (Chicken in Sweet Soy Sauce) box, 180g, with a bowl of chicken in dark soy gravy", fullBleed: true },
     accent: "#7A3E1D",
     featured: true,
-    priceSGD: 7.90, // Sample price (SGD) — confirm before launch
+    priceSGD: 7.90, // SGD — Tok Bah range price
     netWeight: "180g", // Sample weight — confirm against the final label
     ingredients: null, // TODO: full ingredient list from final label
     allergens: null, // TODO: e.g. ["Soy", "Wheat"]
@@ -108,10 +116,10 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/rendang-daging-pack.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) box, 180g, with a bowl of beef rendang" },
+    image: { src: "/products/rendang-daging-pack.webp", alt: "Tok Bah Rendang Daging (Beef Rendang) box, 180g, with a bowl of beef rendang", fullBleed: true },
     accent: "#5A2414",
     featured: true,
-    priceSGD: 9.90, // Sample price (SGD) — confirm before launch
+    priceSGD: 7.90, // SGD — Tok Bah range price
     netWeight: "180g", // Sample weight — confirm against the final label
     ingredients: null, // TODO
     allergens: null, // TODO
@@ -134,10 +142,10 @@ export const products: Product[] = [
     ],
     spiceLevel: 3,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-sambal-tumis-pack.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) box, 250g, with a bowl of red sambal" },
+    image: { src: "/products/pes-sambal-tumis-pack.webp", alt: "Tok Bah Pes Sambal Tumis (Sambal Tumis Paste) box, 250g, with a bowl of red sambal", fullBleed: true },
     accent: "#A8261B",
     featured: true,
-    priceSGD: 6.90, // Sample price (SGD) — confirm before launch
+    priceSGD: 7.90, // SGD — Tok Bah range price
     netWeight: "250g", // Sample weight — confirm against the final label
     ingredients: null, // TODO
     allergens: null, // TODO
@@ -160,9 +168,9 @@ export const products: Product[] = [
     ],
     spiceLevel: 2,
     flavours: ["spicy", "savoury"],
-    image: { src: "/products/pes-rendang-pack.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) box, 250g, with a bowl of rendang paste" },
+    image: { src: "/products/pes-rendang-pack.webp", alt: "Tok Bah Pes Rendang (Rendang Paste) box, 250g, with a bowl of rendang paste", fullBleed: true },
     accent: "#6B2E16",
-    priceSGD: 7.50, // Sample price (SGD) — confirm before launch
+    priceSGD: 7.90, // SGD — Tok Bah range price
     netWeight: "250g", // Sample weight — confirm against the final label
     ingredients: null, // TODO
     allergens: null, // TODO
@@ -186,8 +194,8 @@ export const products: Product[] = [
     spiceLevel: 0,
     flavours: ["savoury"],
     image: { src: "/products/nasi-putih-basmathi-label.webp", alt: "Tok Bah Nasi Putih Basmathi (Basmathi Rice) pack front with a bowl of white basmathi rice" },
-    accent: "#B8893B",
-    priceSGD: 3.90, // Sample price (SGD) — confirm before launch
+    accent: "#A8966C",
+    priceSGD: 3.90, // SGD
     netWeight: "200g", // Sample weight — confirm against the final label
     ingredients: null, // TODO
     allergens: null, // TODO

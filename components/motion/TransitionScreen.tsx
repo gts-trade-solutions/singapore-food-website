@@ -76,7 +76,7 @@ function TokBahScene({ title, slow }: { title: string; slow: boolean }) {
           <svg viewBox="0 0 120 60" className="w-full">
             <path d="M8 10 H112 A52 48 0 0 1 8 10Z" fill="#FAF7F0" />
             <path d="M18 14 H102 A42 30 0 0 1 18 14Z" fill="#5A2414" opacity=".9" />
-            <path d="M2 10 H118" stroke="#B8893B" strokeWidth="4" strokeLinecap="round" />
+            <path d="M2 10 H118" stroke="#A8966C" strokeWidth="4" strokeLinecap="round" />
           </svg>
         </motion.div>
         <motion.p variants={screenItem} className="eyebrow !text-tb-gold-light">
@@ -149,7 +149,7 @@ function MakChicScene({ title, slow }: { title: string; slow: boolean }) {
 function RjsScene({ title, slow }: { title: string; slow: boolean }) {
   return (
     <>
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-tb-brown via-tb-gold to-mc-red" />
       <motion.div variants={screenItem} aria-hidden="true" className="absolute -bottom-24 -left-24 h-80 w-80 text-tb-gold">
         <BatikFlower className="spin-slow h-full w-full opacity-10" />
       </motion.div>
@@ -174,7 +174,7 @@ function RjsScene({ title, slow }: { title: string; slow: boolean }) {
           {slow ? "Almost ready, plating up…" : "Tradisi · Rasa · Bersama — mmm...dapp!"}
         </motion.p>
         <div className="mt-6">
-          <ProgressBar trackClass="bg-ivory/15" barClass="bg-gradient-to-r from-tb-teal via-tb-gold to-mc-red" />
+          <ProgressBar trackClass="bg-ivory/15" barClass="bg-gradient-to-r from-tb-brown via-tb-gold to-mc-red" />
         </div>
       </motion.div>
     </>

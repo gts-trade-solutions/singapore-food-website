@@ -57,7 +57,7 @@ export function TokBahHero() {
             delay={0.25}
             stagger={0.14}
             text={"Tok Bah.\nTradition, taste,\ntogether."}
-            className="mt-5 text-[clamp(2.75rem,5.5vw,5.5rem)] leading-[0.95] text-tb-teal"
+            className="mt-5 text-[clamp(2.75rem,5.5vw,5.5rem)] leading-[0.95] text-tb-brown"
           />
           <DrawLine className="mt-5 !max-w-xs" />
           <Reveal immediate delay={0.5}>
@@ -79,7 +79,7 @@ export function TokBahHero() {
           <Reveal immediate delay={0.75}>
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="The Tok Bah range">
               {RANGE.map((r) => (
-                <li key={r.label} className="inline-flex items-center gap-2 rounded-full border border-tb-gold/40 bg-tb-aqua/60 px-3 py-1.5 text-sm text-tb-teal">
+                <li key={r.label} className="inline-flex items-center gap-2 rounded-full border border-tb-gold/40 bg-tb-mist/60 px-3 py-1.5 text-sm text-tb-brown">
                   <span className="font-serif text-lg leading-none text-tb-gold-ink italic">{r.count}</span> {r.label}
                 </li>
               ))}
@@ -90,10 +90,10 @@ export function TokBahHero() {
 
         <div className="relative mx-auto aspect-[4/5] w-full max-w-md lg:aspect-[20/21] lg:max-w-none">
           <div aria-hidden="true" className="absolute inset-[2%] rounded-t-full border border-tb-gold/50" />
-          <ImageReveal immediate className="absolute inset-[5%] rounded-t-full bg-tb-aqua" delay={0.2}>
+          <ImageReveal immediate className="absolute inset-[5%] rounded-t-full bg-tb-mist" delay={0.2}>
             <div className="relative h-full w-full">
               <div className="absolute inset-x-[8%] top-[16%] bottom-[2%]">
-                <Steam className="absolute -top-16 left-1/2 w-24 -translate-x-1/2 text-tb-teal/40" />
+                <Steam className="absolute -top-16 left-1/2 w-24 -translate-x-1/2 text-tb-brown/40" />
                 <ProductImage
                   src={rendang.image.src}
                   alt={rendang.image.alt}

@@ -3,7 +3,7 @@ import { brands } from "@/data/brands";
 import { getProduct } from "@/data/products";
 
 export const brandColors: Record<BrandKey, string> = {
-  rjs: "#1E1C1A",
+  rjs: "#3A302B",
   tokbah: brands["tok-bah"].color,
   makchic: brands["mak-chic"].color,
 };

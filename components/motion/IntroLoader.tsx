@@ -7,7 +7,7 @@ import { INTRO_SESSION_KEY } from "@/lib/intro";
 
 /**
  * First-visit intro: the logo mark draws itself in, then two curtains part
- * (teal up, red down) to reveal the page. It is pure CSS (see globals.css), so it
+ * (brown up, red down) to reveal the page. It is pure CSS (see globals.css), so it
  * plays from the first paint without waiting for JavaScript; this component only
  * remembers that it has played and removes it afterwards.
  * Skipped on return visits, on phones and for reduced motion (lib/intro.ts).
@@ -44,7 +44,7 @@ export function IntroLoader() {
 
   return (
     <div aria-hidden="true" className="intro-loader pointer-events-none fixed inset-0 z-[100]">
-      <div className="intro-curtain-top absolute inset-x-0 top-0 h-1/2 bg-tb-teal" />
+      <div className="intro-curtain-top absolute inset-x-0 top-0 h-1/2 bg-tb-brown" />
       <div className="intro-curtain-bottom absolute inset-x-0 bottom-0 h-1/2 bg-mc-red" />
       <div className="intro-mark absolute inset-0 grid place-items-center">
         <div className="flex flex-col items-center gap-5">
@@ -66,12 +66,12 @@ export function IntroLoader() {
               className="intro-stroke"
               pathLength={1}
               d={LOGO_PATHS.underline}
-              stroke="#B8893B"
+              stroke="#A8966C"
               strokeWidth={LOGO_PATHS.underlineStroke}
               style={{ animationDelay: "0.6s" }}
             />
             <g className="rise-in" style={{ animationDelay: "0.75s" }}>
-              <LogoFoods fill="#D9B06A" />
+              <LogoFoods fill="#D6C9A2" />
             </g>
           </svg>
           <p className="text-xs font-semibold tracking-[0.3em] text-ivory/80 uppercase" lang="ms">

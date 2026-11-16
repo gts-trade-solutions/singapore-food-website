@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { TokBahHero } from "@/components/sections/tokbah/TokBahHero";
 import { HeritageStory } from "@/components/sections/tokbah/HeritageStory";
 import { PasteToPlate } from "@/components/sections/tokbah/PasteToPlate";
+import { TravelBanner } from "@/components/sections/tokbah/TravelBanner";
 import { ProductGrid } from "@/components/sections/ProductGrid";
 import { CrossBrandCta } from "@/components/sections/CrossBrandCta";
 import { SplitText } from "@/components/motion/SplitText";
@@ -26,7 +27,7 @@ export default function TokBahPage() {
       <div className="border-y border-tb-gold/30 bg-tb-ivory py-5" aria-hidden="true">
         <Marquee speed={1.5}>
           {["Tradisi · Rasa · Bersama", "Citarasa Nusantara", "Tradition · Taste · Together", "Taste of the Archipelago"].map((t) => (
-            <span key={t} className="flex items-center px-8 font-serif text-3xl text-tb-teal italic md:text-4xl">
+            <span key={t} className="flex items-center px-8 font-serif text-3xl text-tb-brown italic md:text-4xl">
               {t}
               <span className="ml-16 text-tb-gold">✦</span>
             </span>
@@ -35,6 +36,7 @@ export default function TokBahPage() {
       </div>
 
       <HeritageStory />
+      <TravelBanner />
 
       <section id="tb-products" aria-labelledby="tb-products-title" className="scroll-mt-24 section-y">
         <div className="container-page">
@@ -44,7 +46,7 @@ export default function TokBahPage() {
               as="h2"
               id="tb-products-title"
               text="Meals, pastes & rice"
-              className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-teal"
+              className="text-[clamp(2.5rem,5vw,4.5rem)] leading-none text-tb-brown"
             />
             <DrawLine className="mx-auto mt-6" />
           </div>

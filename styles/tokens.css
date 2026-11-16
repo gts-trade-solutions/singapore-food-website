@@ -6,15 +6,17 @@
 
 :root {
   /* ---------- Raw palette ---------- */
-  /* Tok Bah */
-  --tb-teal: #0f3d3e;
-  --tb-forest: #1f4d36;
-  --tb-gold: #b8893b;
-  --tb-gold-ink: #8a6424; /* AA-safe gold for small text on ivory */
-  --tb-gold-light: #d9b06a; /* AA-safe gold for small text on teal / dark */
-  --tb-ink-deep: #0a2324; /* AA-safe text on gold */
+  /* Tok Bah: "Elegant Nusantara" palette (steel blue, antique gold and brown on white) */
+  --tb-brown: #4e423c; /* primary: headings, buttons, dark panels */
+  --tb-umber: #6b5a4f; /* lighter brown for gradients and glows on brown */
+  --tb-steel: #849cae; /* steel blue for decoration and large shapes */
+  --tb-steel-ink: #526b80; /* AA-safe steel blue for small text on ivory / mist / cream */
+  --tb-gold: #a8966c;
+  --tb-gold-ink: #74643f; /* AA-safe gold for small text on ivory / mist */
+  --tb-gold-light: #d6c9a2; /* AA-safe gold for small text on brown / dark */
+  --tb-ink-deep: #2b2420; /* AA-safe text on gold */
   --tb-ivory: #fdfcfa;
-  --tb-aqua: #e3f1f1;
+  --tb-mist: #e6ebef; /* light steel-blue surface behind product images and panels */
 
   /* Mak 'Chic' Keropok */
   --mc-red: #d9372a;
@@ -26,22 +28,31 @@
 
   /* Shared */
   --rjs-ivory: #fdfcfa;
-  --rjs-charcoal: #1e1c1a;
-  --rjs-stone: #6b645c;
+  --rjs-charcoal: #3a302b; /* warm near-black brown (Elegant Nusantara palette) */
+  --rjs-stone: #665e57;
   --rjs-line: #e4ddd0;
+}
 
-  /* ---------- Semantic tokens (RJS default) ---------- */
+/*
+ * ---------- Semantic tokens (RJS default) ----------
+ * Also matched by [data-brand="rjs"], so RJS-branded parts (e.g. the footer) keep the RJS theme on Tok Bah
+ * and Mak 'Chic' pages, where <html> carries the page's own brand.
+ */
+:root,
+[data-brand="rjs"] {
   --brand-bg: var(--rjs-ivory);
   --brand-surface: #f2ede3;
   --brand-ink: var(--rjs-charcoal);
   --brand-muted: var(--rjs-stone);
   --brand-line: var(--rjs-line);
-  --brand-primary: var(--rjs-charcoal);
+  --brand-primary: var(--tb-brown);
   --brand-primary-ink: var(--rjs-ivory);
   --brand-accent: var(--tb-gold);
   --brand-accent-ink: var(--tb-gold-ink);
   --brand-highlight: var(--mc-red);
-  --brand-focus: #2563eb;
+  --brand-focus: var(--tb-steel-ink);
+  /* Small uppercase labels (.eyebrow) */
+  --brand-eyebrow: var(--tb-steel-ink);
 
   --brand-font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --brand-font-body: var(--font-inter), Inter, system-ui, sans-serif;
@@ -50,8 +61,8 @@
 
   --brand-radius-card: 1.25rem;
   --brand-radius-button: 999px;
-  --brand-shadow-card: 0 1px 2px rgb(30 28 26 / 0.04), 0 12px 32px -12px rgb(30 28 26 / 0.18);
-  --brand-shadow-lift: 0 2px 4px rgb(30 28 26 / 0.06), 0 30px 60px -20px rgb(30 28 26 / 0.3);
+  --brand-shadow-card: 0 1px 2px rgb(58 48 43 / 0.04), 0 12px 32px -12px rgb(58 48 43 / 0.18);
+  --brand-shadow-lift: 0 2px 4px rgb(58 48 43 / 0.06), 0 30px 60px -20px rgb(58 48 43 / 0.3);
 
   /* Motion personality */
   --brand-ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -62,16 +73,17 @@
 
 [data-brand="tokbah"] {
   --brand-bg: var(--tb-ivory);
-  --brand-surface: var(--tb-aqua);
-  --brand-ink: #13292a;
-  --brand-muted: #4b5f5f;
-  --brand-line: #d6e2dc;
-  --brand-primary: var(--tb-teal);
+  --brand-surface: var(--tb-mist);
+  --brand-ink: var(--rjs-charcoal);
+  --brand-muted: var(--rjs-stone);
+  --brand-line: #e2ddd5;
+  --brand-primary: var(--tb-brown);
   --brand-primary-ink: var(--tb-ivory);
   --brand-accent: var(--tb-gold);
   --brand-accent-ink: var(--tb-gold-ink);
-  --brand-highlight: var(--tb-forest);
-  --brand-focus: var(--tb-gold-ink);
+  --brand-highlight: var(--tb-umber);
+  --brand-focus: var(--tb-steel-ink);
+  --brand-eyebrow: var(--tb-steel-ink);
 
   --brand-font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --brand-font-body: var(--font-inter), Inter, system-ui, sans-serif;
@@ -80,8 +92,8 @@
 
   --brand-radius-card: 0.375rem;
   --brand-radius-button: 0.25rem;
-  --brand-shadow-card: 0 1px 2px rgb(15 61 62 / 0.05), 0 18px 40px -20px rgb(15 61 62 / 0.25);
-  --brand-shadow-lift: 0 2px 6px rgb(15 61 62 / 0.08), 0 40px 70px -30px rgb(15 61 62 / 0.4);
+  --brand-shadow-card: 0 1px 2px rgb(78 66 60 / 0.05), 0 18px 40px -20px rgb(78 66 60 / 0.25);
+  --brand-shadow-lift: 0 2px 6px rgb(78 66 60 / 0.08), 0 40px 70px -30px rgb(78 66 60 / 0.4);
 
   --brand-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --brand-duration: 1100ms;
@@ -99,6 +111,7 @@
   --brand-accent-ink: var(--mc-cocoa);
   --brand-highlight: var(--mc-leaf);
   --brand-focus: var(--mc-cocoa);
+  --brand-eyebrow: var(--mc-cocoa);
 
   --brand-font-display: var(--font-lobster), Lobster, "Brush Script MT", cursive;
   --brand-font-body: var(--font-poppins), Poppins, system-ui, sans-serif;
