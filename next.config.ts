@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Optional: build to another folder (e.g. while a dev server is using .next).
   distDir: process.env.NEXT_DIST_DIR || ".next",
+  // The project folder is the root, even if a parent folder has its own package-lock.json (as on the VPS).
+  outputFileTracingRoot: __dirname,
   images: {
     formats: ["image/avif", "image/webp"],
   },
