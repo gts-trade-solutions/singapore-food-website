@@ -14,7 +14,7 @@ export const siteConfig = {
   registeredLocation: "HDB Public Shelters, Singapore",
   description:
     "Home of Tok Bah ready-to-eat meals and Mak 'Chic' Keropok crackers. Nusantara flavours, made for Singapore homes.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.rjsfoods.sg").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://rjsstore.com").replace(/\/$/, ""),
   locale: "en-SG",
   currency: "SGD",
   /** Business phone, as displayed. Also the WhatsApp number that receives orders. */

@@ -10,6 +10,17 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["framer-motion"],
   },
+  // rjsstore.com is the main address: send www visitors there so search engines see one site.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.rjsstore.com" }],
+        destination: "https://rjsstore.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

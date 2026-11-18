@@ -29,6 +29,34 @@ Other scripts:
 
 Import the repo in Vercel, add the environment variables below, and deploy. No extra configuration is needed.
 
+### Deploying to a VPS (rjsstore.com)
+
+The live site runs on an Ubuntu/Debian VPS. Nginx sits in front, the app runs as the `rjsstore` systemd service on `127.0.0.1:3100`, and Let's Encrypt provides HTTPS. Everything is in [`deploy/`](deploy/).
+
+**1. DNS (GoDaddy → rjsstore.com → DNS).** Delete the existing `A` records for `@` (the GoDaddy parking IPs), add one `A` record for `@` pointing to the VPS IP, and keep the `www` CNAME pointing to `@`. Turn off any GoDaddy domain forwarding.
+
+**2. First-time setup (on the VPS, as root):**
+
+```bash
+curl -fsSLO https://raw.githubusercontent.com/gts-trade-solutions/singapore-food-website/main/deploy/setup-server.sh
+bash setup-server.sh you@example.com   # the email gets Let's Encrypt expiry warnings
+```
+
+This installs Nginx, Node.js 22 and Certbot, builds the site in `/var/www/rjsstore`, starts it, and adds HTTPS if the DNS already points to the server. If the DNS hasn't updated yet, run the script again later to add HTTPS.
+
+**3. Updating after a push to `main`:**
+
+```bash
+bash /var/www/rjsstore/deploy/update.sh
+```
+
+It builds beside the running site and only restarts once the build has succeeded, so visitors see a second or two of downtime at most.
+
+- **Settings:** `/var/www/rjsstore/.env.production.local` (see the variables below). Run `update.sh` after changing it.
+- **Logs:** `journalctl -u rjsstore -f`. Status: `systemctl status rjsstore`.
+- **Rolling back:** the previous build is kept in `.next-old`. In `/var/www/rjsstore`, run `mv .next .next-bad && mv .next-old .next && systemctl restart rjsstore`.
+- `rjsstore.com` is the main address. `www.rjsstore.com` redirects to it (see `next.config.ts`).
+
 ---
 
 ## Environment variables
@@ -36,7 +64,7 @@ Import the repo in Vercel, add the environment variables below, and deploy. No e
 | Variable | Required | Example | Purpose |
 | --- | --- | --- | --- |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | No | `6591234567` | Overrides the number that receives orders and enquiries. Digits only, with country code, no `+`. Defaults to the business number in `lib/config.ts` (`phone`, +65 8011 4353). |
-| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | `https://www.rjsfoods.sg` | Canonical URLs, sitemap, Open Graph and JSON-LD. |
+| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | `https://rjsstore.com` | Canonical URLs, sitemap, Open Graph and JSON-LD. |
 | `NEXT_PUBLIC_SHOW_CERTIFICATIONS` | No | `true` | Shows certification badges (e.g. halal). **Off by default**; turn on only once certificates are confirmed. Badge details live in `lib/config.ts`. |
 | `NEWSLETTER_WEBHOOK_URL` | No | `https://hooks.zapier.com/...` | Server-only. Newsletter sign-ups are POSTed here as `{ email, source }`. Without it, the form tells people sign-ups open soon and offers WhatsApp updates instead. |
 
