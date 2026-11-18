@@ -143,7 +143,7 @@ function ShopCard({ product, index }: { product: Product; index: number }) {
           <div
             className={cn(
               "relative aspect-[4/3] overflow-hidden",
-              hasPhoto ? "bg-surface" : isSnack ? "bg-halftone bg-mc-cream" : "bg-batik-dots bg-tb-ivory",
+              hasPhoto ? "bg-surface" : isSnack ? "bg-halftone bg-mc-cream" : "bg-tb-ivory",
             )}
           >
             {!hasPhoto && (
@@ -265,7 +265,7 @@ export function OurProducts() {
                 aria-labelledby={`row-${brand}`}
                 className={cn(
                   "rounded-card p-4 md:p-6",
-                  isSnack ? "bg-halftone bg-mc-cheese/25" : "bg-batik-dots bg-tb-mist/60",
+                  isSnack ? "bg-halftone bg-mc-cheese/25" : "bg-tb-mist/60",
                 )}
               >
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3 md:mb-5">

@@ -92,7 +92,6 @@ const ICONS = { heat: HeatIcon, serve: ServeIcon, share: ShareIcon };
 export function HowItWorks() {
   return (
     <section aria-labelledby="how-title" data-brand="tokbah" className="relative z-10 overflow-hidden bg-tb-teal section-y text-tb-ivory">
-      <div aria-hidden="true" className="bg-batik-dots absolute inset-0 opacity-40" />
       <div className="container-page relative">
         <div className="mx-auto mb-8 md:mb-10 max-w-2xl text-center">
           <p className="eyebrow mb-4 !text-tb-gold-light">How it works</p>

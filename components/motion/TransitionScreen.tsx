@@ -61,7 +61,6 @@ function ProgressBar({ trackClass, barClass }: { trackClass: string; barClass: s
 function TokBahScene({ title, slow }: { title: string; slow: boolean }) {
   return (
     <>
-      <div aria-hidden="true" className="bg-batik-dots absolute inset-0 opacity-50" />
       <motion.div variants={screenItem} aria-hidden="true" className="absolute -top-24 -left-24 h-80 w-80 text-tb-gold">
         <BatikFlower className="spin-slow h-full w-full opacity-20" />
       </motion.div>

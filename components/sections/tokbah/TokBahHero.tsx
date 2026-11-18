@@ -37,7 +37,6 @@ export function TokBahHero() {
   const sambal = getProduct("pes-sambal-tumis")!;
   return (
     <section aria-labelledby="tb-title" className="relative overflow-hidden bg-tb-ivory section-top">
-      <div aria-hidden="true" className="bg-batik-dots absolute inset-0 opacity-60" />
       <BatikFlower className="pointer-events-none absolute -top-24 -right-24 h-[28rem] w-[28rem] text-tb-gold opacity-15" />
 
       <div className="container-page relative grid items-center gap-8 md:gap-10 lg:grid-cols-2">

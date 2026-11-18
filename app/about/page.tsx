@@ -61,7 +61,7 @@ export default function AboutPage() {
             <ImageReveal className="rounded-card">
               <div
                 data-brand="tokbah"
-                className="bg-batik-dots relative grid aspect-[4/3] grid-cols-[1fr_44%] bg-tb-teal p-5 text-tb-ivory sm:p-7"
+                className="relative grid aspect-[4/3] grid-cols-[1fr_44%] bg-tb-teal p-5 text-tb-ivory sm:p-7"
               >
                 <div className="relative z-10 flex flex-col">
                   <p className="eyebrow !text-tb-gold-light">Tok Bah</p>
@@ -132,7 +132,7 @@ export default function AboutPage() {
               Five steps, the same for every batch. The slow parts stay slow, because that is where the flavour comes from.
             </p>
             <ImageReveal className="mt-6 rounded-card">
-              <div className="bg-batik-dots relative grid aspect-[16/9] grid-cols-3 items-end gap-2 bg-tb-mist px-[6%] pt-[6%]">
+              <div className="relative grid aspect-[16/9] grid-cols-3 items-end gap-2 bg-tb-mist px-[6%] pt-[6%]">
                 {[sambal, rendang, tempe].map((p, i) => (
                   <ProductImage
                     key={p.slug}

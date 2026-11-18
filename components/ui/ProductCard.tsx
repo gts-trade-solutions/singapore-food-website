@@ -62,7 +62,7 @@ export function ProductCard({
         >
           {/* 4:3 frame for every card so rows line up: the dish photo fills it with the pack in the corner;
               products without a dish photo (round labels) sit whole inside it. */}
-          <div className={cn("relative aspect-[4/3] overflow-hidden", hasPhoto ? "bg-surface" : isSnack ? "bg-halftone" : "bg-batik-dots")}>
+          <div className={cn("relative aspect-[4/3] overflow-hidden", hasPhoto ? "bg-surface" : isSnack ? "bg-halftone" : "")}>
             {!hasPhoto && (
               <span
                 aria-hidden="true"

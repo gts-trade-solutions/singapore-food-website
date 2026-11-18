@@ -15,7 +15,7 @@ export function CrossBrandCta({ to }: { to: BrandSlug }) {
       aria-labelledby={`cta-${to}`}
       className={cn("relative overflow-hidden section-y", isSnack ? "bg-mc-red text-white" : "bg-tb-teal text-tb-ivory")}
     >
-      <div aria-hidden="true" className={cn("absolute inset-0 opacity-40", isSnack ? "bg-halftone" : "bg-batik-dots")} />
+      {isSnack && <div aria-hidden="true" className="bg-halftone absolute inset-0 opacity-40" />}
       <div className="container-page relative flex flex-col items-center text-center">
         <p className={cn("eyebrow mb-5", isSnack ? "!text-white" : "!text-tb-gold-light")}>
           {isBrandComingSoon(to) ? "Coming soon from our kitchen" : "Also from our kitchen"}

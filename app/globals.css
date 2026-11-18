@@ -172,12 +172,6 @@
     white-space: nowrap;
   }
 
-  /* Batik-inspired dotted background used on Tok Bah surfaces */
-  .bg-batik-dots {
-    background-image: radial-gradient(rgb(168 150 108 / 0.3) 1px, transparent 1.2px);
-    background-size: 22px 22px;
-  }
-
   /* Halftone used on Mak 'Chic' surfaces */
   .bg-halftone {
     background-image: radial-gradient(rgb(74 31 18 / 0.12) 1.6px, transparent 1.8px);

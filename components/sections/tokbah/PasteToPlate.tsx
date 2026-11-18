@@ -127,7 +127,6 @@ export function PasteToPlate() {
       aria-labelledby="ptp-title"
       className={cn("relative overflow-hidden bg-tb-mist", enhanced ? "h-[100svh] pt-[var(--header-h)]" : "section-y")}
     >
-      <div aria-hidden="true" className="bg-batik-dots absolute inset-0 opacity-50" />
       <div className={cn("container-page relative grid", enhanced ? "h-full grid-cols-2 items-center gap-12" : "gap-8 md:gap-10")}>
         {/* Copy */}
         <div>

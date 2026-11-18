@@ -114,7 +114,7 @@ export function ProductPurchase({ product }: { product: Product }) {
             <div
               className={cn(
                 "relative aspect-square overflow-hidden rounded-card",
-                isSnack ? "bg-halftone border-[3px] border-mc-cocoa bg-mc-cheese shadow-card" : "bg-batik-dots bg-tb-mist",
+                isSnack ? "bg-halftone border-[3px] border-mc-cocoa bg-mc-cheese shadow-card" : "bg-tb-mist",
               )}
             >
               <span

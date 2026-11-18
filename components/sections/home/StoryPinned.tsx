@@ -165,7 +165,7 @@ export function StoryPinned() {
     </div>,
     <div key="tokbah" className="relative grid h-full w-full place-items-center">
       <div className="absolute aspect-square w-[98%] rounded-full border border-tb-gold/60" />
-      <div className="bg-batik-dots absolute aspect-square w-[90%] rounded-full bg-tb-ivory shadow-card" />
+      <div className="absolute aspect-square w-[90%] rounded-full bg-tb-ivory shadow-card" />
       <Steam className="absolute top-[6%] w-[18%] text-tb-teal/40" />
       <div className="relative flex w-[96%] items-end justify-center gap-[1%] pt-[8%]">
         {pack(kicap, "w-[33%] -rotate-6 translate-y-[4%]")}

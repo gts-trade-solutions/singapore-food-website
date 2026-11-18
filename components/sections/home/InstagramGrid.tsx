@@ -40,7 +40,7 @@ export function InstagramGrid() {
                     <div
                       className={cn(
                         "relative aspect-[3/4] overflow-hidden",
-                        product.image.fullBleed ? "bg-tb-mist" : isSnack ? "bg-halftone bg-mc-cheese" : "bg-batik-dots bg-tb-mist",
+                        product.image.fullBleed ? "bg-tb-mist" : isSnack ? "bg-halftone bg-mc-cheese" : "bg-tb-mist",
                       )}
                     >
                       <ProductImage
