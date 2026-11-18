@@ -29,32 +29,33 @@ Other scripts:
 
 Import the repo in Vercel, add the environment variables below, and deploy. No extra configuration is needed.
 
-### Deploying to a VPS (rjsstore.com)
+### Deploying to the VPS (rjsstore.com)
 
-The live site runs on an Ubuntu/Debian VPS. Nginx sits in front, the app runs as the `rjsstore` systemd service on `127.0.0.1:3100`, and Let's Encrypt provides HTTPS. Everything is in [`deploy/`](deploy/).
+The live site runs on the shared VPS `72.62.228.202` (Ubuntu 24.04) alongside the other apps, following the same setup they use: the code is in `/home/deploy/rjsstore`, pm2 runs it as `rjsstore` on `127.0.0.1:3100`, and Nginx with a Let's Encrypt certificate sits in front. The scripts are in [`deploy/`](deploy/). Log in as `deploy`.
 
-**1. DNS (GoDaddy → rjsstore.com → DNS).** Delete the existing `A` records for `@` (the GoDaddy parking IPs), add one `A` record for `@` pointing to the VPS IP, and keep the `www` CNAME pointing to `@`. Turn off any GoDaddy domain forwarding.
+**1. DNS (GoDaddy → rjsstore.com → DNS).** Delete the existing `A` records for `@` (the GoDaddy parking IPs), add one `A` record for `@` → `72.62.228.202`, and keep the `www` CNAME pointing to `@`. Turn off any GoDaddy domain forwarding.
 
-**2. First-time setup (on the VPS, as root):**
+**2. First time on the server:**
 
 ```bash
-curl -fsSLO https://raw.githubusercontent.com/gts-trade-solutions/singapore-food-website/main/deploy/setup-server.sh
-bash setup-server.sh you@example.com   # the email gets Let's Encrypt expiry warnings
+git clone https://github.com/gts-trade-solutions/singapore-food-website.git ~/rjsstore
+bash ~/rjsstore/deploy/update.sh               # builds and starts the site under pm2
+sudo bash ~/rjsstore/deploy/enable-site.sh     # Nginx for rjsstore.com, plus HTTPS once DNS points here
 ```
 
-This installs Nginx, Node.js 22 and Certbot, builds the site in `/var/www/rjsstore`, starts it, and adds HTTPS if the DNS already points to the server. If the DNS hasn't updated yet, run the script again later to add HTTPS.
+If the DNS hadn't updated when you ran `enable-site.sh`, run it again later to add HTTPS.
 
 **3. Updating after a push to `main`:**
 
 ```bash
-bash /var/www/rjsstore/deploy/update.sh
+bash ~/rjsstore/deploy/update.sh
 ```
 
 It builds beside the running site and only restarts once the build has succeeded, so visitors see a second or two of downtime at most.
 
-- **Settings:** `/var/www/rjsstore/.env.production.local` (see the variables below). Run `update.sh` after changing it.
-- **Logs:** `journalctl -u rjsstore -f`. Status: `systemctl status rjsstore`.
-- **Rolling back:** the previous build is kept in `.next-old`. In `/var/www/rjsstore`, run `mv .next .next-bad && mv .next-old .next && systemctl restart rjsstore`.
+- **Settings:** `~/rjsstore/.env.production.local` (see the variables below). Run `update.sh` after changing it.
+- **Logs:** `pm2 logs rjsstore`. Status: `pm2 describe rjsstore`.
+- **Rolling back:** the previous build is kept in `.next-old`. In `~/rjsstore`, run `mv .next .next-bad && mv .next-old .next && pm2 restart rjsstore`.
 - `rjsstore.com` is the main address. `www.rjsstore.com` redirects to it (see `next.config.ts`).
 
 ---
